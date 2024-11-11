@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   texto: {
-    color: '#4ca04a',
+    color: '#4CA04A',
     fontSize: 20,
     fontWeight: 'bold',
   },
