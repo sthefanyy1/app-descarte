@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   botaoEntrar: {
-    marginTop: 100,
+    marginTop: 70,
     backgroundColor: '#4CA04a',
     borderRadius: 5,
     width: 250,
