@@ -13,11 +13,11 @@ export default function App() {
       <Text style={styles.texto}>DESCARTE CONSCIENTE </Text>
 
       <Link href='/entrar' asChild>
-        <Button mode='contained' style={styles.botao1}>Entrar</Button>
+        <Button mode='contained' style={styles.botaoEntrar}>Entrar</Button>
       </Link> 
 
       <Link href='/cadastrar' asChild>
-        <Button mode='contained' style={styles.botao2}>Quero me cadastrar</Button>
+        <Button mode='contained' style={styles.botaoCadastrar}>Quero me cadastrar</Button>
       </Link> 
 
     </View>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  botao1: {
+  botaoEntrar: {
     marginTop: 100,
     backgroundColor: '#4CA04a',
     borderRadius: 5,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  botao2: {
+  botaoCadastrar: {
     marginTop: 70,
     backgroundColor: '#4CA04a',
     borderRadius: 5,
