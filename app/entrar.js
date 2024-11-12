@@ -1,38 +1,118 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import { TextInput, IconButton } from 'react-native-paper';
+import { TextInput, IconButton, Button } from 'react-native-paper';
 import { Link } from 'expo-router';
 
 const Entrar = () => {
+
+    const [email, setEmail] = React.useState('');
+    const [senha, setSenha] = React.useState('');
+
     return (
         <View style={styles.container}>
+            
             <Link style={styles.voltar} href='/'>
-                <IconButton icon="home" size={24} iconColor="#4ca04a"/>
+                <IconButton icon="arrow-left" size={24} iconColor="#4ca04a"/>
             </Link>
+
             <Text style={styles.texto}>Bem-vindo(a) de volta!</Text>
             <Text style={styles.texto}>Faça seu login</Text>
 
             <TextInput style={styles.inputEmail}
                 defaultValue={email}
                 onChangeText={setEmail}
-                textColor="#fff"
-                autoCapitalize='words'
-                activeUnderlineColor='#4ca04a'
+                textColor="#4CA04A"
+                autoCapitalize='none'
+                keyboardType='email-address'
+                activeUnderlineColor='#4CA04A'
                 label="Digite seu email"
             />
             <TextInput  style={styles.inputSenha}
                 defaultValue={senha}
                 onChangeText={setSenha}
-                textColor="#fff"
+                textColor="#4CA04A"
                 autoCapitalize='words'
-                activeUnderlineColor='#4ca04a'
-                label="Digite seu email"
+                secureTextEntry={true} //esconde a senha
+                right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
+                maxLength={5} //tamanho do texto
+                activeUnderlineColor='#4CA04A'
+                label="Digite sua senha"
             />
+
+            <Text style={styles.textoEsqueceu}>Esqueceu sua senha?</Text>
+
+            <Link href='/' asChild> 
+                <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
+            </Link> 
+
+            <Text style={styles.textoCadastre}>Ainda não possui uma conta?</Text>
+
+            <Link href='/' style={styles.fazerConta}>Faça sua conta</Link> 
 
         </View>
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        padding: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop:10,
+        justifyContent: 'center',
+    },
+    voltar: {
+        position: 'absolute',
+        top: 20,
+        left: 20
+    },
+    texto: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    inputEmail: {
+        backgroundColor: '#fff',
+        color: '#4CA04A',
+        borderRadius: 5,
+        marginBottom: 20,
+        padding: 10,
+    },
+    inputSenha: {
+        backgroundColor: '#fff',
+        color: '#4CA04A',
+        borderRadius: 5,
+        marginBottom: 20,
+        padding: 10,
+    },
+    textoEsqueceu: { 
+        color: '#000000',
+        fontSize: 15,
+        textAlign: 'right',
+        fontWeight: 'bold',
+    },
+    botaoEntre: {
+        backgroundColor: '#4CA04A',
+        borderRadius: 5,
+        marginTop: 50,
+        marginBottom: 5,
+        padding: 10,
+    },
+    textoCadastre: {
+        color: '#000000',
+        fontSize: 15,
+        textAlign: 'center',
+        marginTop: 50,
+        marginBottom: 20,
+    },
+    fazerConta: {
+        color: '#4CA04A',
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'center',
+    }
+})
 
 export default Entrar;

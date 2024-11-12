@@ -42,20 +42,16 @@ const styles = StyleSheet.create({
   },
   botaoEntrar: {
     marginTop: 70,
-    backgroundColor: '#4CA04a',
+    backgroundColor: '#4CA04A',
     borderRadius: 5,
     width: 250,
     padding: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   botaoCadastrar: {
     marginTop: 70,
-    backgroundColor: '#4CA04a',
+    backgroundColor: '#4CA04A',
     borderRadius: 5,
     width: 250,
     padding: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
   }
 });
