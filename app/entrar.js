@@ -39,7 +39,7 @@ const Entrar = () => {
                     autoCapitalize='words'
                     secureTextEntry={true} //esconde a senha
                     right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
-                    maxLength={5} //tamanho do texto
+                    maxLength={5} //tamanho da senha - senha com 5 digitos
                     activeUnderlineColor='#4CA04A'
                     label="Digite sua senha"
                 />
