@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import { TextInput, IconButton, Button } from 'react-native-paper';
-import { Link } from 'expo-router';
+import { KeyboardAvoidingView, View, StyleSheet, Text } from 'react-native';
+import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
+import { Link, router } from 'expo-router';
 
 const Entrar = () => {
 
@@ -9,47 +9,52 @@ const Entrar = () => {
     const [senha, setSenha] = React.useState('');
 
     return (
-        <View style={styles.container}>
+            <View style={styles.container}>
             
-            <Link style={styles.voltar} href='/'>
-                <IconButton icon="arrow-left" size={24} iconColor="#4ca04a"/>
-            </Link>
+                {/* <Link style={styles.voltar} href='/'>
+                    <IconButton icon="arrow-left" size={24} iconColor="#4ca04a"/>
+                </Link> */}
 
-            <Text style={styles.texto}>Bem-vindo(a) de volta!</Text>
-            <Text style={styles.texto}>Faça seu login</Text>
+                <Appbar.Header>
+                    <Appbar.BackAction style={styles.voltar}  onPress={() => {router.back()}} />
+                </Appbar.Header>
 
-            <TextInput style={styles.inputEmail}
-                defaultValue={email}
-                onChangeText={setEmail}
-                textColor="#4CA04A"
-                autoCapitalize='none'
-                keyboardType='email-address'
-                activeUnderlineColor='#4CA04A'
-                label="Digite seu email"
-            />
-            <TextInput  style={styles.inputSenha}
-                defaultValue={senha}
-                onChangeText={setSenha}
-                textColor="#4CA04A"
-                autoCapitalize='words'
-                secureTextEntry={true} //esconde a senha
-                right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
-                maxLength={5} //tamanho do texto
-                activeUnderlineColor='#4CA04A'
-                label="Digite sua senha"
-            />
+                <Text style={styles.texto}>Bem-vindo(a) de volta!</Text>
+                <Text style={styles.texto}>Faça seu login</Text>
 
-            <Text style={styles.textoEsqueceu}>Esqueceu sua senha?</Text>
+                <TextInput style={styles.inputEmail}
+                    defaultValue={email}
+                    onChangeText={setEmail}
+                    textColor="#4CA04A"
+                    autoCapitalize='none'
+                    keyboardType='email-address'
+                    activeUnderlineColor='#4CA04A'
+                    label="Digite seu email"
+                />
 
-            <Link href='/' asChild> 
-                <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
-            </Link> 
+                <TextInput  style={styles.inputSenha}
+                    defaultValue={senha}
+                    onChangeText={setSenha}
+                    textColor="#4CA04A"
+                    autoCapitalize='words'
+                    secureTextEntry={true} //esconde a senha
+                    right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
+                    maxLength={5} //tamanho do texto
+                    activeUnderlineColor='#4CA04A'
+                    label="Digite sua senha"
+                />
 
-            <Text style={styles.textoCadastre}>Ainda não possui uma conta?</Text>
+                <Text style={styles.textoEsqueceu}>Esqueceu sua senha?</Text>
 
-            <Link href='/' style={styles.fazerConta}>Faça sua conta</Link> 
+                <Link href='/' asChild> 
+                    <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
+                </Link> 
 
-        </View>
+                <Text style={styles.textoCadastre}>Ainda não possui uma conta?</Text>
+
+                <Link href='/' style={styles.fazerConta}>Faça sua conta</Link> 
+
+            </View>
     );
 }
 
@@ -60,32 +65,28 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        marginTop:10,
-        justifyContent: 'center',
+        //marginTop:10,
+        justifyContent: 'space-around',
     },
     voltar: {
-        position: 'absolute',
-        top: 20,
-        left: 20
+        // top: 20,
+        // left: 20,
+        //backgroundColor: '#fff',
+        //color: '#4CA04A',
     },
     texto: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
     },
     inputEmail: {
         backgroundColor: '#fff',
         color: '#4CA04A',
         borderRadius: 5,
-        marginBottom: 20,
-        padding: 10,
     },
     inputSenha: {
         backgroundColor: '#fff',
         color: '#4CA04A',
         borderRadius: 5,
-        marginBottom: 20,
-        padding: 10,
     },
     textoEsqueceu: { 
         color: '#000000',
@@ -96,16 +97,12 @@ const styles = StyleSheet.create({
     botaoEntre: {
         backgroundColor: '#4CA04A',
         borderRadius: 5,
-        marginTop: 50,
-        marginBottom: 5,
         padding: 10,
     },
     textoCadastre: {
         color: '#000000',
         fontSize: 15,
         textAlign: 'center',
-        marginTop: 50,
-        marginBottom: 20,
     },
     fazerConta: {
         color: '#4CA04A',
