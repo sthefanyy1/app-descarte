@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardAvoidingView, View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
@@ -39,7 +39,7 @@ const Entrar = () => {
                     autoCapitalize='words'
                     secureTextEntry={true} //esconde a senha
                     right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
-                    maxLength={5} //tamanho da senha - senha com 5 digitos
+                    maxLength={6} //tamanho da senha - senha com 6 digitos
                     activeUnderlineColor='#4CA04A'
                     label="Digite sua senha"
                 />
@@ -78,12 +78,10 @@ const styles = StyleSheet.create({
     inputEmail: {
         backgroundColor: '#fff',
         color: '#4CA04A',
-        borderRadius: 5,
     },
     inputSenha: {
         backgroundColor: '#fff',
         color: '#4CA04A',
-        borderRadius: 5,
     },
     textoEsqueceu: { 
         color: '#000000',
