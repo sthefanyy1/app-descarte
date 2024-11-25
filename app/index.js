@@ -7,11 +7,12 @@ import { Button } from 'react-native-paper';
 export default function App() {
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerFoto}>
       <StatusBar style="auto" />
       <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
       <Text style={styles.texto}>DESCARTE CONSCIENTE </Text>
 
+      <View style={styles.containerBotao}>
       <Link href='/entrar' asChild>
         <Button mode='contained' style={styles.botaoEntrar}>Entrar</Button>
       </Link> 
@@ -19,17 +20,19 @@ export default function App() {
       <Link href='/cadastrar' asChild>
         <Button mode='contained' style={styles.botaoCadastrar}>Quero me cadastrar</Button>
       </Link> 
-
     </View>
+    </View>
+
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  containerFoto: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 50,
   },
   logotipo: {
     width: 200,
@@ -40,15 +43,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  containerBotao:{
+    alignItems: 'center',
+  },
   botaoEntrar: {
-    marginTop: 70,
+    marginTop: 150,
     backgroundColor: '#4CA04A',
     borderRadius: 5,
     width: 250,
     padding: 10,
   },
   botaoCadastrar: {
-    marginTop: 70,
+    marginTop: 20,
     backgroundColor: '#4CA04A',
     borderRadius: 5,
     width: 250,

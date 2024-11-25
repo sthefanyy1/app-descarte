@@ -2,6 +2,7 @@ import React from 'react';
 import { KeyboardAvoidingView, View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const Entrar = () => {
 
@@ -15,11 +16,11 @@ const Entrar = () => {
                     <IconButton icon="arrow-left" size={24} iconColor="#4CA04A"/>
                 </Link> */}
 
-                <Appbar.Header>
-                    <Appbar.BackAction style={styles.voltar}  onPress={() => {router.back()}} />
-                </Appbar.Header>
+               <Appbar.Header style={styles.header}>
+                    <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                </Appbar.Header> 
 
-                <Text style={styles.texto}>Bem-vindo(a) de volta! {'\n'}Faça seu login </Text>
+                <Text style={styles.texto}>    Bem-vindo(a) de volta! {'\n'}    Faça seu login </Text>
 
                 <TextInput style={styles.inputEmail}
                     defaultValue={email}
@@ -43,13 +44,13 @@ const Entrar = () => {
                     label="Digite sua senha"
                 />
 
-                <Text style={styles.textoEsqueceu}>Esqueceu sua senha?</Text>
+                <Link href='/' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
                 <Link href='/' asChild> 
                     <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
                 </Link> 
 
-                <Text style={styles.textoCadastre}>Ainda não possui uma conta?</Text>
+                <Link href='/' style={styles.textoCadastre}>Ainda não possui uma conta?</Link>
 
                 <Link href='/' style={styles.fazerConta}>Faça sua conta</Link> 
 
@@ -67,11 +68,8 @@ const styles = StyleSheet.create({
         //marginTop:10,
         justifyContent: 'space-around',
     },
-    voltar: {
-        // top: 20,
-        // left: 20,
-        //backgroundColor: '#fff',
-        //color: '#4CA04A',
+    header:{
+        backgroundColor: '#fff',
     },
     texto: {
         fontSize: 20,
