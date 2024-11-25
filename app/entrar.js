@@ -12,15 +12,14 @@ const Entrar = () => {
             <View style={styles.container}>
             
                 {/* <Link style={styles.voltar} href='/'>
-                    <IconButton icon="arrow-left" size={24} iconColor="#4ca04a"/>
+                    <IconButton icon="arrow-left" size={24} iconColor="#4CA04A"/>
                 </Link> */}
 
                 <Appbar.Header>
                     <Appbar.BackAction style={styles.voltar}  onPress={() => {router.back()}} />
                 </Appbar.Header>
 
-                <Text style={styles.texto}>Bem-vindo(a) de volta!</Text>
-                <Text style={styles.texto}>Faça seu login</Text>
+                <Text style={styles.texto}>Bem-vindo(a) de volta! {'\n'}Faça seu login </Text>
 
                 <TextInput style={styles.inputEmail}
                     defaultValue={email}
