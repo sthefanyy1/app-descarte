@@ -61,7 +61,7 @@ const Cadastrar = () => {
                     right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
                     maxLength={6} //tamanho da senha - senha com 6 digitos
                     activeUnderlineColor='#4CA04A'
-                    label="Confrime sua senha"
+                    label="Confirme sua senha"
                 />
 
                 <Link href='/' asChild> 
