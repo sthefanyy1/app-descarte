@@ -1,76 +1,88 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
+import { Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
-import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const Cadastrar = () => {
-
     const [nome, setNome] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [senha, setSenha] = React.useState('');
     const [confirmar, setConfirmar] = React.useState('');
+    const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Visibilidade da senha
+    const [confirmarVisivel, setConfirmarVisivel] = React.useState(false); // Visibilidade da confirmação
 
     return (
-            <View style={styles.container}>
+        <View style={styles.container}>
+            <View>
+                <Appbar.Header style={styles.header}>
+                    <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
+                </Appbar.Header>
 
-                <View>
-                    <Appbar.Header style={styles.header}>
-                     <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
-                    </Appbar.Header> 
-
-                    <Text style={styles.texto}>Olá! {'\n'}Vamos começar? </Text>
-                </View>
-
-                <TextInput style={styles.inputNome}
-                    defaultValue={nome}
-                    onChangeText={setNome}
-                    textColor="#4CA04A"
-                    autoCapitalize='none'
-                    keyboardType='name'
-                    activeUnderlineColor='#4CA04A'
-                    label="Digite seu nome"
-                />
-
-                <TextInput style={styles.inputEmail}
-                    defaultValue={email}
-                    onChangeText={setEmail}
-                    textColor="#4CA04A"
-                    autoCapitalize='none'
-                    keyboardType='email-address'
-                    activeUnderlineColor='#4CA04A'
-                    label="Digite seu email"
-                />
-
-                <TextInput style={styles.inputSenha}
-                    defaultValue={senha}
-                    onChangeText={setSenha}
-                    textColor="#4CA04A"
-                    autoCapitalize='words'
-                    secureTextEntry={true} //esconde a senha
-                    right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
-                    maxLength={6} //tamanho da senha - senha com 6 digitos
-                    activeUnderlineColor='#4CA04A'
-                    label="Digite sua senha"
-                />
-
-                <TextInput style={styles.inputSenha}
-                    defaultValue={confirmar}
-                    onChangeText={setConfirmar}
-                    textColor="#4CA04A"
-                    autoCapitalize='words'
-                    secureTextEntry={true} //esconde a senha
-                    right={<TextInput.Icon icon="eye" />} //exibe o icone de olho
-                    maxLength={6} //tamanho da senha - senha com 6 digitos
-                    activeUnderlineColor='#4CA04A'
-                    label="Confirme sua senha"
-                />
-
-                <Link href='/' asChild> 
-                    <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
-                </Link> 
-
+                <Text style={styles.texto}>Olá! {'\n'}Vamos começar? </Text>
             </View>
+
+            <TextInput
+                style={styles.inputNome}
+                value={nome}
+                onChangeText={setNome}
+                textColor="#4CA04A"
+                autoCapitalize='none'
+                keyboardType='name'
+                activeUnderlineColor='#4CA04A'
+                label="Digite seu nome"
+            />
+
+            <TextInput
+                style={styles.inputEmail}
+                value={email}
+                onChangeText={setEmail}
+                textColor="#4CA04A"
+                autoCapitalize='none'
+                keyboardType='email-address'
+                activeUnderlineColor='#4CA04A'
+                label="Digite seu email"
+            />
+
+            <TextInput
+                style={styles.inputSenha}
+                value={senha}
+                onChangeText={setSenha}
+                textColor="#4CA04A"
+                autoCapitalize='none'
+                secureTextEntry={!senhaVisivel} // Controla visibilidade da senha
+                right={
+                    <TextInput.Icon
+                        icon={senhaVisivel ? "eye" : "eye-off"} // Alterna o ícone
+                        onPress={() => setSenhaVisivel(!senhaVisivel)} // Alterna o estado
+                    />
+                }
+                maxLength={6}
+                activeUnderlineColor='#4CA04A'
+                label="Digite sua senha"
+            />
+
+            <TextInput
+                style={styles.inputSenha}
+                value={confirmar}
+                onChangeText={setConfirmar}
+                textColor="#4CA04A"
+                autoCapitalize='none'
+                secureTextEntry={!confirmarVisivel} // Controla visibilidade da confirmação
+                right={
+                    <TextInput.Icon
+                        icon={confirmarVisivel ? "eye" : "eye-off"} // Alterna o ícone
+                        onPress={() => setConfirmarVisivel(!confirmarVisivel)} // Alterna o estado
+                    />
+                }
+                maxLength={6} // Limite de 6 digitos
+                activeUnderlineColor='#4CA04A'
+                label="Confirme sua senha"
+            />
+
+            <Link href='/' asChild>
+                <Button mode='contained' style={styles.botaoEntre}>Cadastrar</Button>
+            </Link>
+        </View>
     );
 }
 
@@ -81,10 +93,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        //marginTop:10,
         justifyContent: 'space-around',
     },
-    header:{
+    header: {
         backgroundColor: '#fff',
     },
     texto: {
@@ -92,7 +103,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    inputNome:{
+    inputNome: {
         backgroundColor: '#fff',
         color: '#4CA04A',
     },
@@ -104,12 +115,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         color: '#4CA04A',
     },
-    botaoEntre:{
+    botaoEntre: {
         backgroundColor: '#4CA04A',
         borderRadius: 5,
         marginTop: 10,
         padding: 10,
-    }
-})
+    },
+});
 
 export default Cadastrar;
