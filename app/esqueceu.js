@@ -1,25 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import {  Appbar, TextInput, Button } from 'react-native-paper';
+import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
-const Esqueceu = () => {
+const Cadastrar = () => {
 
     const [email, setEmail] = React.useState('');
 
     return (
-            <View style={styles.container}>
-
-                <View>
-                    <Appbar.Header style={styles.header}>
-                        <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
-                    </Appbar.Header> 
-
-                    <Text style={styles.texto}>Esqueceu sua senha?{'\n'}</Text>
-                    <Text style={styles.subTexto}>Por favor, insira o e-mail vinculado a sua conta.</Text>
-                </View>
-
+            <View>
+                <Appbar.Header style={styles.header}>
+                    <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                </Appbar.Header> 
+                <View style={styles.container1}> 
+                    <View style={styles.container}>
+                        <Text style={styles.texto}>Esqueceu sua senha?</Text>
+                        <Text style={styles.subTexto}>Por favor, insira o e-mail vinculado a sua conta.</Text>
+                    </View>
 
                 <TextInput style={styles.inputEmail}
                     defaultValue={email}
@@ -35,6 +33,7 @@ const Esqueceu = () => {
                     <Button mode='contained' style={styles.botaoAvance}>Avançar</Button>
                 </Link> 
 
+                </View>
             </View>
     );
 }
@@ -42,7 +41,16 @@ const Esqueceu = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#c58d8d',
+        backgroundColor: '#180909',
+        padding: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        //marginTop:10,
+        justifyContent: 'flex-start',
+    },
+    container1: {
+        flex: 1,
+        backgroundColor: '#817f7f',
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
@@ -50,32 +58,27 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
     header:{
-        backgroundColor: '#fff',
+        backgroundColor: '#2e24c2',
     },
-    texto: {
+    texto:{
         marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
-    subTexto: {
+    subTexto:{
         marginLeft: 20,
         fontSize: 13,
     },
-    inputEmail: {
+    inputEmail:{
         backgroundColor: '#fff',
         color: '#4CA04A',
     },
-    textoEsqueceu: { 
-        color: '#000000',
-        fontSize: 15,
-        textAlign: 'right',
-        fontWeight: 'bold',
-    },
-    botaoAvance: {
+    botaoAvance:{
         backgroundColor: '#4CA04A',
         borderRadius: 5,
+        marginTop: 10,
         padding: 10,
     }
 })
 
-export default Esqueceu;
+export default Cadastrar;
