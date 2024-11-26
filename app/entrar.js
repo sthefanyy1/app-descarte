@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import {  Appbar, TextInput, IconButton, Button } from 'react-native-paper';
+import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
@@ -11,16 +11,14 @@ const Entrar = () => {
 
     return (
             <View style={styles.container}>
-            
-                {/* <Link style={styles.voltar} href='/'>
-                    <IconButton icon="arrow-left" size={24} iconColor="#4CA04A"/>
-                </Link> */}
 
-               <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
-                </Appbar.Header> 
+                <View>
+                    <Appbar.Header style={styles.header}>
+                     <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                    </Appbar.Header> 
 
-                <Text style={styles.texto}>    Bem-vindo(a) de volta! {'\n'}    Faça seu login </Text>
+                    <Text style={styles.texto}>Bem-vindo(a) de volta! {'\n'}Faça seu login </Text>
+                </View>
 
                 <TextInput style={styles.inputEmail}
                     defaultValue={email}
@@ -44,15 +42,19 @@ const Entrar = () => {
                     label="Digite sua senha"
                 />
 
-                <Link href='/' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
+                <Link href='/esqueceu' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
                 <Link href='/' asChild> 
                     <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
                 </Link> 
 
-                <Link href='/' style={styles.textoCadastre}>Ainda não possui uma conta?</Link>
+                <Text style={styles.textoCadastre}>Ainda não possui uma conta?{'\n'}
+                    <Link href='/cadastrar' style={styles.fazerConta}>Faça sua conta</Link> 
+                </Text>
 
-                <Link href='/' style={styles.fazerConta}>Faça sua conta</Link> 
+                {/* <Link href='/cadastrar' style={styles.textoCadastre}>Ainda não possui uma conta?</Link> */}
+
+                {/* <Link href='/' style={styles.fazerConta}>Faça sua conta</Link>  */}
 
             </View>
     );
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     texto: {
+        marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },

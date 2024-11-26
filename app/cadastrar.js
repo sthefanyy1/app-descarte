@@ -14,11 +14,13 @@ const Cadastrar = () => {
     return (
             <View style={styles.container}>
 
-               <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
-                </Appbar.Header> 
+                <View>
+                    <Appbar.Header style={styles.header}>
+                     <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                    </Appbar.Header> 
 
-                <Text style={styles.texto}>    Olá! {'\n'}    Vamos começar? </Text>
+                    <Text style={styles.texto}>Olá! {'\n'}Vamos começar? </Text>
+                </View>
 
                 <TextInput style={styles.inputNome}
                     defaultValue={nome}
@@ -86,6 +88,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     texto: {
+        marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
