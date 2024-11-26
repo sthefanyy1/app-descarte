@@ -10,9 +10,11 @@ const Cadastrar = () => {
 
     return (
             <View>
+
                 <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
                 </Appbar.Header> 
+                
                 <View style={styles.container1}> 
                     <View style={styles.container}>
                         <Text style={styles.texto}>Esqueceu sua senha?</Text>
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
     header:{
-        backgroundColor: '#2e24c2',
+        backgroundColor: '#c29024',
     },
     texto:{
         marginLeft: 20,
