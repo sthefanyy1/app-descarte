@@ -31,7 +31,7 @@ const Esqueceu = () => {
                     label="Digite seu email"
                     />
 
-                    <Link href='/' asChild>
+                    <Link href='/esqueceu2' asChild>
                         <Button mode='contained' style={styles.botaoAvance}>Avançar</Button>
                     </Link>
                 </View>
@@ -43,8 +43,9 @@ const Esqueceu = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#00ff00',
+        backgroundColor: '#fff',
         padding: 10,
+        margin: 30,
         marginLeft: 10,
         marginRight: 10,
         //marginTop:10,
@@ -52,15 +53,15 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        padding: 20,
-        justifyContent: 'center', 
+        padding: 2,
+        justifyContent: 'space-around', 
     },
     header:{
         backgroundColor: '#fff',
-        //marginTop: -50,
     },
     texto: {
-        marginTop: -240,
+        //marginTop: -240,
+        margin: -15,
         marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',

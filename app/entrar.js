@@ -47,7 +47,7 @@ const Entrar = () => {
                 label="Digite sua senha"
             />
 
-            <Link href='/esqueceu' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
+            <Link href='/esqueceu1' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
             <Link href='/' asChild>
                 <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
