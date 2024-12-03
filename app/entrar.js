@@ -72,11 +72,11 @@ const Entrar = () => {
             <Link href='/esqueceu1' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
             <Link href='/' asChild>
-                <Button mode='contained' style={styles.botaoEntre}>Entrar</Button>
+                <Button mode='contained' onPress={() => handleLogin()} style={styles.botaoEntre}>Entrar</Button>
             </Link>
 
             <Text style={styles.textoCadastre}>Ainda não possui uma conta?{'\n'}
-                <Link href='/cadastrar' onPress={() => handleLogin()} style={styles.fazerConta}>Faça sua conta</Link>
+                <Link href='/cadastrar' style={styles.fazerConta}>Faça sua conta</Link>
             </Text>
         </View>
     );
