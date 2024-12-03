@@ -1,33 +1,37 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
-import { Link, router } from 'expo-router';
+import { Link, router, useRouter } from 'expo-router';
 import auth from '../firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-const handleLogin = () => {
-    console.log('handleLogin');
-    signInWithEmailAndPassword(auth, 'sg123@gmail.com', '987654')
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log('logado com sucesso');
-      console.log(user.uid);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorCode);
-      console.error(errorMessage);
-    });
-  }
-
 const Entrar = () => {
+    const router = useRouter();
     const [email, setEmail] = React.useState('');
     const [senha, setSenha] = React.useState('');
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Estado para controlar a visibilidade da senha
+
+    const handleLogin = () => {
+        console.log('handleLogin');
+        signInWithEmailAndPassword(auth, email , senha)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log('logado com sucesso');
+          console.log(user.uid);
+          router.replace('/home');
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error(errorCode);
+          console.error(errorMessage);
+          Alert.alert('Deu erro', 'Algo errado no seu login', [
+        ]);
+        });
+      }
 
     return (
         <View style={styles.container}>
@@ -71,10 +75,8 @@ const Entrar = () => {
 
             <Link href='/esqueceu1' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
-            <Link href='/' asChild>
-                <Button mode='contained' onPress={() => handleLogin()} style={styles.botaoEntre}>Entrar</Button>
-            </Link>
-
+            <Button mode='contained' onPress={() => handleLogin()} style={styles.botaoEntre}>Entrar</Button>
+      
             <Text style={styles.textoCadastre}>Ainda não possui uma conta?{'\n'}
                 <Link href='/cadastrar' style={styles.fazerConta}>Faça sua conta</Link>
             </Text>
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
         textAlign: 'center',
-    }
+    },
 });
 
 export default Entrar;
