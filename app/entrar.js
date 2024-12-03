@@ -24,11 +24,17 @@ const Entrar = () => {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error(errorCode);
-          console.error(errorMessage);
+        //   const errorCode = error.code;
+        //   const errorMessage = error.message;
+        //   console.error(errorCode);
+        //   console.error(errorMessage);
           Alert.alert('Deu erro', 'Algo errado no seu login', [
+            {
+                text: 'Cancelar',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+              },
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
         ]);
         });
       }
