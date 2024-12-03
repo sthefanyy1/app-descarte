@@ -4,12 +4,11 @@ import { View, StyleSheet, Text } from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 const Home = () => {
 
 const handleSignOut = () => {
-    const auth = getAuth();
         signOut(auth).then(() => {
             // Sign-out successful.
             router.replace('/');
@@ -20,8 +19,6 @@ const handleSignOut = () => {
         const errorMessage = error.message;
         console.error(errorCode);
         console.error(errorMessage);
-        console.log('Erro');
-            
     });
 }
 
@@ -35,7 +32,7 @@ const handleSignOut = () => {
 
                 <Text style={styles.texto}>Olá! Você está logado.{'\n'} </Text>
 
-                <Button href='/sair' style={styles.sair}>Sair</Button>
+                <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
             </View>
         </View>
     );
