@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
@@ -11,12 +11,15 @@ const Entrar = () => {
     const [email, setEmail] = React.useState('');
     const [senha, setSenha] = React.useState('');
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Estado para controlar a visibilidade da senha
+    const [logando, setLogando] = useState(false);
 
     const handleLogin = () => {
+        setLogando(true);
         console.log('handleLogin');
         signInWithEmailAndPassword(auth, email , senha)
         .then((userCredential) => {
           // Signed in 
+          setLogando(false);
           const user = userCredential.user;
           console.log('logado com sucesso');
           console.log(user.uid);
@@ -28,6 +31,7 @@ const Entrar = () => {
         //   const errorMessage = error.message;
         //   console.error(errorCode);
         //   console.error(errorMessage);
+        setLogando(false);
           Alert.alert('Deu erro', 'Algo errado no seu login', [
             {text: 'OK', onPress: () => console.log('OK Pressed')},
         ]);
@@ -76,7 +80,7 @@ const Entrar = () => {
 
             <Link href='/esqueceu1' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
-            <Button mode='contained' onPress={() => handleLogin()} style={styles.botaoEntre}>Entrar</Button>
+            <Button mode='contained' onPress={() => handleLogin()} loading={logando} style={styles.botaoEntre}>Entrar</Button>
       
             <Text style={styles.textoCadastre}>Ainda não possui uma conta?{'\n'}
                 <Link href='/cadastrar' style={styles.fazerConta}>Faça sua conta</Link>
