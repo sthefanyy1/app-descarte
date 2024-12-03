@@ -3,6 +3,26 @@ import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
+import auth from '../firebase.config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
+const handleLogin = () => {
+    console.log('handleLogin');
+    signInWithEmailAndPassword(auth, 'sg123@gmail.com', '987654')
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log('logado com sucesso');
+      console.log(user.uid);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorCode);
+      console.error(errorMessage);
+    });
+  }
 
 const Entrar = () => {
     const [email, setEmail] = React.useState('');
@@ -56,7 +76,7 @@ const Entrar = () => {
             </Link>
 
             <Text style={styles.textoCadastre}>Ainda não possui uma conta?{'\n'}
-                <Link href='/cadastrar' style={styles.fazerConta}>Faça sua conta</Link>
+                <Link href='/cadastrar' onPress={() => handleLogin()} style={styles.fazerConta}>Faça sua conta</Link>
             </Text>
         </View>
     );
