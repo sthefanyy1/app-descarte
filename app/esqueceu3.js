@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from 'expo-router';
@@ -7,7 +8,7 @@ const Certo = () => {
 
     return (
             <View style={styles.container}>
-
+            <StatusBar style="auto" />
                 <View style={styles.content}>
                     <Text style={styles.texto}>
                         Tudo certo!{'\n'}

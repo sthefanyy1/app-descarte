@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
@@ -13,6 +14,7 @@ const Finalizar = () => {
 
     return (
             <View style={styles.container}>
+            <StatusBar style="auto" />
 
                 <Appbar.Header style={styles.header}>
                         <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
