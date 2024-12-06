@@ -1,8 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet, Text } from 'react-native';
-import { Appbar, Button } from 'react-native-paper';
-import { router } from 'expo-router';
+import { View, Image, StyleSheet, Text } from 'react-native';
+import { Button, Avatar } from 'react-native-paper';
+import { Link, router } from 'expo-router';
 import auth from '../firebase.config';
 import { signOut } from "firebase/auth";
 
@@ -26,13 +26,20 @@ const handleSignOut = () => {
         <View style={styles.container}>
             <View>
             <StatusBar style="auto" />
-                <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
-                </Appbar.Header>
+                <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
 
-                <Text style={styles.texto}>Olá! Você está logado.{'\n'} </Text>
+                {/* <Avatar.Image size={20} source={require('../assets/avatar.png')} /> */} 
+                {/* não funciona com imagem, não sei resolver */}
+
+                <Avatar.Text size={50} label="XD" />
+
+                <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
                 <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
+
+                <Link href='/entrar' asChild>
+                    <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
+                </Link>
             </View>
         </View>
     );
@@ -47,8 +54,12 @@ const styles = StyleSheet.create({
         marginRight: 10,
         justifyContent: 'space-around',
     },
-    header: {
-        backgroundColor: '#fff',
+    // header: {
+    //     backgroundColor: '#fff',
+    // },
+    logotipo: {
+        width: 150,
+        height: 150,
     },
     texto: {
         marginLeft: 20,
@@ -63,6 +74,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#4CA04A',
         textDecorationLine: 'underline',
+    },
+    botaoVoltar: {
+        backgroundColor: '#4CA04A',
+        borderRadius: 5,
+        padding: 10,
     },
 });
 
