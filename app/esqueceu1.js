@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     texto: {
         //marginTop: -240,
-        margin: -15,
+        //margin: -15,
         marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',

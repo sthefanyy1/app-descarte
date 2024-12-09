@@ -4,19 +4,19 @@ import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from 'expo-router';
 
-const Certo = () => {
+const Nova = () => {
 
     return (
             <View style={styles.container}>
             <StatusBar style="auto" />
                 <View style={styles.content}>
                     <Text style={styles.texto}>
-                        Tudo certo!{'\n'}
-                        Crie sua nova senha, entre na sua caixa de e-mail
+                        Crie sua nova senha!{'\n'}
+                        Verifique a sua caixa de e-mail
                     </Text>
 
                     <Link href='/entrar' asChild>
-                        <Button mode='contained' style={styles.botaoAvance}>Entrar</Button>
+                        <Button mode='contained' style={styles.botaoEntrar}>Entrar</Button>
                     </Link>
                 </View>
 
@@ -37,21 +37,21 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        padding: 2,
+        padding: 10,
         justifyContent: 'space-around', 
     },
     texto: {
         //marginTop: -240,
-        margin: -15,
-        marginLeft: 20,
+        //margin: -15,
+        marginLeft: 10,
         fontSize: 20,
         fontWeight: 'bold',
     },
-    botaoAvance: {
+    botaoEntrar: {
         backgroundColor: '#4CA04A',
         borderRadius: 5,
         padding: 10,
     }
 })
 
-export default Certo;
+export default Nova;
