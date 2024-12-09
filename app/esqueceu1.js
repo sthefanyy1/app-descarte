@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import auth from '../firebase.config';
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const Esqueceu = () => {
 
     const [email, setEmail] = React.useState('');
-    const auth = getAuth();
-    //auth.languageCode = 'pt';
-    sendPasswordResetEmail(auth, email)
-        .then(() => {
-        // Password reset email sent!
-        // ..
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-    });
+    const [redefinindo, setRedefinindo] = useState(false);
+    // const auth = getAuth();
+    // //auth.languageCode = 'pt';
+    // sendPasswordResetEmail(auth, email)
+    //     .then(() => {
+    //     // Password reset email sent!
+    //     // ..
+    // })
+    // .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    // });
+
+    const handleRedefinir = async () => {
+        try {
+            setRedefinindo(true);
+            await sendPasswordResetEmail(auth, email)
+            router.replace('/esqueceu2');
+            setRedefinindo(false);
+        } catch (error) {
+            console.error(error.code);
+            console.error(error.message);
+            setRedefinindo(false);
+        }
+    }
 
     return (
             <View style={styles.container}>
@@ -46,9 +61,11 @@ const Esqueceu = () => {
                     label="Digite seu email"
                     />
 
-                    <Link href='/esqueceu2' asChild>
+                    {/* <Link href='/esqueceu2' asChild>
                         <Button mode='contained' style={styles.botaoAvance}>Avançar</Button>
-                    </Link>
+                    </Link> */}
+
+                    <Button mode='contained' onPress={() => handleRedefinir()} loading={redefinindo} style={styles.botaoAvance}>Avançar</Button>
                 </View>
 
             </View>
