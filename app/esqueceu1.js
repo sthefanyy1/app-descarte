@@ -4,10 +4,23 @@ import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 const Esqueceu = () => {
 
     const [email, setEmail] = React.useState('');
+    const auth = getAuth();
+    //auth.languageCode = 'pt';
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+        // Password reset email sent!
+        // ..
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
 
     return (
             <View style={styles.container}>
