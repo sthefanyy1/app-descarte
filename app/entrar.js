@@ -13,30 +13,44 @@ const Entrar = () => {
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Estado para controlar a visibilidade da senha
     const [logando, setLogando] = useState(false);
 
-    const handleLogin = () => {
-        setLogando(true);
-        console.log('handleLogin');
-        signInWithEmailAndPassword(auth, email , senha)
-        .then((userCredential) => {
-          // Signed in 
-          setLogando(false);
-          const user = userCredential.user;
-          console.log('logado com sucesso');
-          console.log(user.uid);
-          router.replace('/home');
-          // ...
-        })
-        .catch((error) => {
-        //   const errorCode = error.code;
-        //   const errorMessage = error.message;
-        //   console.error(errorCode);
-        //   console.error(errorMessage);
-        setLogando(false);
-          Alert.alert('Deu erro', 'Algo errado no seu login', [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ]);
-        });
-      }
+    // const handleLogin = () => {
+    //     setLogando(true);
+    //     console.log('handleLogin');
+    //     signInWithEmailAndPassword(auth, email , senha)
+    //     .then((userCredential) => {
+    //       // Signed in 
+    //       setLogando(false);
+    //       const user = userCredential.user;
+    //       console.log('logado com sucesso');
+    //       console.log(user.uid);
+    //       router.replace('/home');
+    //       // ...
+    //     })
+    //     .catch((error) => {
+    //     //   const errorCode = error.code;
+    //     //   const errorMessage = error.message;
+    //     //   console.error(errorCode);
+    //     //   console.error(errorMessage);
+    //     setLogando(false);
+    //       Alert.alert('Deu erro', 'Algo errado no seu login', [
+    //         {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //     ]);
+    //     });
+    //   }
+    const handleLogin = async () => {
+        try {
+            setLogando(true);
+            await signInWithEmailAndPassword(auth, email, senha);
+            setLogando(false);
+            router.replace('/home');
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorCode);
+            console.error(errorMessage);
+            setLogando(false);
+        }
+    }
 
     return (
         <View style={styles.container}>

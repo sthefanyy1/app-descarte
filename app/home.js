@@ -8,18 +8,28 @@ import { signOut } from "firebase/auth";
 
 const Home = () => {
 
-const handleSignOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
+// const handleSignOut = () => {
+//         signOut(auth).then(() => {
+//             // Sign-out successful.
+//             router.replace('/');
+//             console.log('Saiu');
+//         }).catch((error) => {
+//             // An error happened.
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         console.error(errorCode);
+//         console.error(errorMessage);
+//     });
+// }
+
+    const handleSignOut = async () => {
+        try {
+            await signOut(auth);
             router.replace('/');
-            console.log('Saiu');
-        }).catch((error) => {
-            // An error happened.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorCode);
-        console.error(errorMessage);
-    });
+        } catch (error) {
+            console.error(error.code);
+            console.error(error.message);
+        }
 }
 
     return (
