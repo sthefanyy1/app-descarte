@@ -49,6 +49,9 @@ const Entrar = () => {
             console.error(errorCode);
             console.error(errorMessage);
             setLogando(false);
+                Alert.alert('Deu erro', 'Algo errado no seu login', [
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ]);
         }
     }
 

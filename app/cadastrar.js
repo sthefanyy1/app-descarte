@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
+import auth from '../firebase.config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Cadastrar = () => {
     const [nome, setNome] = React.useState('');
@@ -11,6 +13,20 @@ const Cadastrar = () => {
     const [confirmar, setConfirmar] = React.useState('');
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Visibilidade da senha
     const [confirmarVisivel, setConfirmarVisivel] = React.useState(false); // Visibilidade da confirmação
+    const [cadastrando, setCadastrando] = useState(false);
+
+    const handleCadastrar = async () => {
+        try {
+            setCadastrando(true);
+            await createUserWithEmailAndPassword(auth, email, senha);
+            router.replace('/home');
+            setCadastrando(false);
+        } catch (error) {
+            console.error(error.code);
+            console.error(error.message);
+            setCadastrando(false);
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -81,9 +97,8 @@ const Cadastrar = () => {
                 label="Confirme sua senha"
             />
 
-            <Link href='/' asChild>
-                <Button mode='contained' style={styles.botaoEntre}>Cadastrar</Button>
-            </Link>
+            <Button mode='contained' onPress={() => handleCadastrar()} loading={cadastrando} style={styles.botaoEntre}>Cadastrar</Button>
+
         </View>
     );
 }
