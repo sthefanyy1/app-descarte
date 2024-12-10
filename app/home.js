@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Avatar } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import auth from '../firebase.config';
@@ -38,10 +38,13 @@ const Home = () => {
             <StatusBar style="auto" />
                 <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
 
-                {/* <Avatar.Image size={20} source={require('../assets/avatar.png')} /> */} 
-                {/* não funciona com imagem, não sei resolver */}
-
-                <Avatar.Text size={50} label="XD" />
+                <Pressable onPress={() =>  console.log('Feito')}>
+                    <Avatar.Text size={50} 
+                    //router.replace('/perfil');
+                    // backgroundColor={'#4CA04A'} 
+                    // borderRadius={'20px'}
+                    label={auth.currentUser.displayName.charAt(0)} />
+                </Pressable>
 
                 <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
 
