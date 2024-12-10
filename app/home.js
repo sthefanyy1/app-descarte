@@ -43,6 +43,8 @@ const Home = () => {
 
                 <Avatar.Text size={50} label="XD" />
 
+                <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
+
                 <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
                 <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
