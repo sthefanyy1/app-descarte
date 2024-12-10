@@ -47,9 +47,9 @@ const Home = () => {
 
                 <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
 
-                <Link href='/entrar' asChild>
+                {/* <Link href='/entrar' asChild>
                     <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
-                </Link>
+                </Link> */}
             </View>
         </View>
     );
@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
         color: '#4CA04A',
         textDecorationLine: 'underline',
     },
-    botaoVoltar: {
-        backgroundColor: '#4CA04A',
-        borderRadius: 5,
-        padding: 10,
-    },
+    // botaoVoltar: {
+    //     backgroundColor: '#4CA04A',
+    //     borderRadius: 5,
+    //     padding: 10,
+    // },
 });
 
 export default Home;

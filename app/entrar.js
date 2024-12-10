@@ -41,7 +41,7 @@ const Entrar = () => {
         try {
             setLogando(true);
             const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-            console.log(userCredential.displayName);
+            console.log(userCredential.user.displayName);
             setLogando(false);
             router.replace('/home');
         } catch (error) {

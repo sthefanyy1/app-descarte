@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 const Cadastrar = () => {
     const [nome, setNome] = React.useState('');
@@ -18,7 +18,9 @@ const Cadastrar = () => {
     const handleCadastrar = async () => {
         try {
             setCadastrando(true);
-            await createUserWithEmailAndPassword(auth, email, senha);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+            await updateProfile(userCredential.user, { displayName: nome });
+            console.log(userCredential.user);
             router.replace('/home');
             setCadastrando(false);
         } catch (error) {
