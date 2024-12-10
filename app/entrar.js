@@ -40,7 +40,8 @@ const Entrar = () => {
     const handleLogin = async () => {
         try {
             setLogando(true);
-            await signInWithEmailAndPassword(auth, email, senha);
+            const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+            console.log(userCredential.displayName);
             setLogando(false);
             router.replace('/home');
         } catch (error) {
