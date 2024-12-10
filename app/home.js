@@ -38,7 +38,7 @@ const Home = () => {
             <StatusBar style="auto" />
                 <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
 
-                <Pressable onPress={() =>  console.log('Feito')}>
+                <Pressable onPress={() =>  router.navigate('/perfil')}>
                     <Avatar.Text size={50} 
                     //router.replace('/perfil');
                     // backgroundColor={'#4CA04A'} 
