@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
@@ -13,11 +13,11 @@ const Perfil = () => {
 
     const handleName = async () => { 
         setAtualizando(true);
-
         try {
             await updateProfile(auth.currentUser, {displayName: nome});
             setAtualizando(false);
             router.replace('/home');
+            Alert.alert('Sucesso', 'Nome atualizado com sucesso!');
         }
         catch (error) {
             Alert.error("Erro ao alterar seu nome.");
