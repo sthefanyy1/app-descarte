@@ -2,29 +2,27 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
-import { Link, router } from 'expo-router';
-import { Header } from 'react-native/Libraries/NewAppScreen';
+import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { sendPasswordResetEmail } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 const Perfil = () => {
 
-    const [nome, setNome] = React.useState('');
+    const [nome, setNome] = React.useState(auth.currentUser.displayName); //aparecer o nome cadastrado
     const [atualizando, setAtualizando] = useState(false);
 
-    // const handleAtualizando = async () => {
-    //     try {
-    //         setAtualizando(true);
-    //         await sendPasswordResetEmail(auth, email)
-    //         router.replace('/esqueceu2');
-    //         setAtualizando(false);
-    //     } catch (error) {
-    //         console.error(error.code);
-    //         console.error(error.message);
-    //         setAtualizando(false);
-    //     }
-    // }
+    const handleName = async () => { 
+        setAtualizando(true);
 
+        try {
+            await updateProfile(auth.currentUser, {displayName: nome});
+            setAtualizando(false);
+            router.replace('/home');
+        }
+        catch (error) {
+            Alert.error("Erro ao alterar seu nome.");
+        };
+    };
 
     return (
             <View style={styles.container}>
@@ -50,7 +48,7 @@ const Perfil = () => {
                         label="Digite seu nome"
                     />
 
-                    <Button mode='contained' onPress={() => handleAtualizando()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
+                    <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
                 </View>
 
             </View>
