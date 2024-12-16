@@ -4,9 +4,19 @@ import { View, StyleSheet, Text, Alert } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { updateProfile } from "firebase/auth";
+import { updateProfile, signOut } from "firebase/auth";
 
 const Perfil = () => {
+
+    const handleSignOut = async () => {
+        try {
+            await signOut(auth);
+            router.replace('/');
+        } catch (error) {
+            console.error(error.code);
+            console.error(error.message);
+        }
+    };
 
     const [nome, setNome] = React.useState(auth.currentUser.displayName); //aparecer o nome cadastrado
     const [atualizando, setAtualizando] = useState(false);
@@ -21,7 +31,7 @@ const Perfil = () => {
         }
         catch (error) {
             Alert.error("Erro ao alterar seu nome.");
-        };
+        }
     };
 
     return (
@@ -49,6 +59,8 @@ const Perfil = () => {
                     />
 
                     <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
+
+                    <Button mode='contained' textColor='#4CA04A' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
                 </View>
 
             </View>
@@ -90,7 +102,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#4CA04A',
         borderRadius: 5,
         padding: 10,
-    }
+    },
+    sair: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginTop: 10,
+        marginBottom: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
 })
 
 export default Perfil;

@@ -8,15 +8,15 @@ import { signOut } from "firebase/auth";
 
 const Home = () => {
 
-    const handleSignOut = async () => {
-        try {
-            await signOut(auth);
-            router.replace('/');
-        } catch (error) {
-            console.error(error.code);
-            console.error(error.message);
-        }
-    }
+    // const handleSignOut = async () => {
+    //     try {
+    //         await signOut(auth);
+    //         router.replace('/');
+    //     } catch (error) {
+    //         console.error(error.code);
+    //         console.error(error.message);
+    //     }
+    // }
 
     return (
         <View style={styles.container}>
@@ -33,7 +33,7 @@ const Home = () => {
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
-            <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
+            {/* <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button> */}
         </View>
     );
 }
@@ -62,15 +62,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    sair: {
-        marginLeft: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#4CA04A',
-        //textDecorationLine: 'underline',
-    },
+    // sair: {
+    //     marginLeft: 20,
+    //     marginTop: 10,
+    //     marginBottom: 10,
+    //     fontSize: 20,
+    //     fontWeight: 'bold',
+    //     color: '#4CA04A',
+    //     //textDecorationLine: 'underline',
+    // },
 });
 
 export default Home;
