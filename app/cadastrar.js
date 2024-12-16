@@ -72,7 +72,7 @@ const Cadastrar = () => {
                 autoCapitalize='none'
                 keyboardType='email-address'
                 activeUnderlineColor='#4CA04A'
-                label="Digite seu email"
+                label="Digite seu e-mail"
             />
 
             <TextInput
