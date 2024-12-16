@@ -37,11 +37,40 @@ const Entrar = () => {
     //     ]);
     //     });
     //   }
+
+    // const handleLogin = async () => {
+    //     try {
+    //         setLogando(true);
+    //         const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+    //         console.log(userCredential.user.displayName);
+    //         setLogando(false);
+    //         router.replace('/home');
+    //     } catch (error) {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         console.error(errorCode);
+    //         console.error(errorMessage);
+    //         setLogando(false);
+    //             Alert.alert('Deu erro', 'Usuário e/ou Senha inválido', [
+    //                 {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //             ]);
+    //     }
+    // }
+
     const handleLogin = async () => {
         try {
             setLogando(true);
             const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-            console.log(userCredential.user.displayName);
+            const user = userCredential.user;
+    
+            // Verifique se o e-mail foi verificado
+            if (!user.emailVerified) {
+                setLogando(false);
+                Alert.alert('Verifique seu e-mail', 'Por favor, verifique seu e-mail antes de continuar.');
+                return; // Impede o login se o e-mail não for verificado
+            }
+    
+            console.log(user.displayName);
             setLogando(false);
             router.replace('/home');
         } catch (error) {
@@ -50,11 +79,12 @@ const Entrar = () => {
             console.error(errorCode);
             console.error(errorMessage);
             setLogando(false);
-                Alert.alert('Deu erro', 'Usuário e/ou Senha inválido', [
-                    {text: 'OK', onPress: () => console.log('OK Pressed')},
-                ]);
+            Alert.alert('Deu erro', 'E-mail/Senha inválido ou não cadastrado', [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]);
         }
-    }
+    };
+    
 
     return (
         <View style={styles.container}>

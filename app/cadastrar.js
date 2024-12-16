@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth';
 
 const Cadastrar = () => {
     const [nome, setNome] = React.useState('');
@@ -14,18 +14,30 @@ const Cadastrar = () => {
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Visibilidade da senha
     const [confirmarVisivel, setConfirmarVisivel] = React.useState(false); // Visibilidade da confirmação
     const [cadastrando, setCadastrando] = useState(false);
+    const [erro, setErro] = useState('');
 
     const handleCadastrar = async () => {
+        if (senha !== confirmar) {
+            setErro('As senhas não coincidem');
+            return;
+        }
         try {
             setCadastrando(true);
             const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
             await updateProfile(userCredential.user, { displayName: nome });
+            await sendEmailVerification(userCredential.user);
+            Alert.alert(
+                'Verificação de E-mail',
+                'Um e-mail de verificação foi enviado para o seu endereço de e-mail. Por favor, verifique sua caixa de entrada.',
+                [{ text: 'OK' }]
+            );
             console.log(userCredential.user);
-            router.replace('/home');
+            router.replace('/');
             setCadastrando(false);
         } catch (error) {
             console.error(error.code);
             console.error(error.message);
+            setErro(error.message);
             setCadastrando(false);
         }
     }
@@ -98,6 +110,8 @@ const Cadastrar = () => {
                 activeUnderlineColor='#4CA04A'
                 label="Confirme sua senha"
             />
+
+            {erro && <Text style={{ color:'red', marginLeft: 20 }}>E-mail/Senha inválido.</Text>}
 
             <Button mode='contained' onPress={() => handleCadastrar()} loading={cadastrando} style={styles.botaoEntre}>Cadastrar</Button>
 
