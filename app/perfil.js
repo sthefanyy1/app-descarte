@@ -30,7 +30,7 @@ const Perfil = () => {
             Alert.alert('Sucesso', 'Nome atualizado com sucesso!');
         }
         catch (error) {
-            Alert.error("Erro ao alterar seu nome.");
+            Alert.error('Erro ao alterar seu nome.');
         }
     };
 
