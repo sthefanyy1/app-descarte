@@ -8,10 +8,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando íco
 
 const Home = () => {
 
-    const [encontrando] = useState(false);
+    const [encontrando] = useState(false); //duvidaaaa!!!!
 
     const handleEncontrar = async () => {
-        router.replace('/municipios');
+        router.navigate('/municipios');
     };
 
     return (
