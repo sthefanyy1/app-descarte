@@ -4,7 +4,7 @@ import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Avatar } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { signOut } from "firebase/auth";
+import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícones
 
 const Home = () => {
 
@@ -23,7 +23,21 @@ const Home = () => {
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
-            {/* <Button onPress={() => handleSignOut()} style={styles.sair}>Sair</Button> */}
+            <View style={styles.buttonContainer}>
+                {/* Botão com ícone e borda verde */}
+                <Button 
+                    mode="outlined" 
+                    buttonColor='#f1f1f1' 
+                    textColor="green" 
+                    onPress={() => console.log('Pressed')}
+                    icon={({ size, color }) => (
+                        <MaterialCommunityIcons name="chevron-down" size={size} color={color} />
+                    )}
+                    style={styles.button} // Adicionando o estilo para borda verde
+                >
+                    Escolha seu Município
+                </Button>
+            </View>
         </View>
     );
 }
@@ -52,6 +66,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    buttonContainer: {
+        marginTop: 20, // Ajuste mais flexível para o espaçamento entre o texto e o botão
+        padding: 10,
+    },
+    button: {
+        borderColor: 'green', // Definindo a borda como verde
+        borderWidth: 1, // Espessura da borda
+        borderRadius: 10,
+    }
 });
 
 export default Home;
