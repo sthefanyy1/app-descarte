@@ -22,13 +22,15 @@ const Municipios = () => {
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
-            <View style={styles.buttonContainer1}>
-                <Link href='/maceio' asChild>
-                    <Button mode='contained' style={styles.botaoMaceio}>Maceió</Button>
-                </Link>
-            </View>
+            <Link href='/maceio' asChild>
+                <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Maceió</Button>
+            </Link>
 
-            <View style={styles.buttonContainer2}>
+            <Link href='/rioLargo' asChild>
+                <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Rio Largo</Button>
+            </Link>
+
+            <View style={styles.buttonContainer}>
                 <Link href='/home' asChild>
                     <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
                 </Link>
@@ -62,24 +64,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    buttonContainer1: {
-        marginTop: 20, // Ajuste mais flexível para o espaçamento entre o texto e o botão
-        padding: 10,
-        borderColor: 'green', // Definindo a borda como verde
-        borderWidth: 1, // Espessura da borda
-        borderRadius: 10,
-    },
-    botaoMaceio: {
-        backgroundColor: 'green',
+    botaoMunicipio: {
+        backgroundColor: 'white',
+        borderColor: 'green',
         borderRadius: 5,
+        borderWidth: 1,
         padding: 10,
         width: 250,
-        borderColor: 'green',
-        borderWidth: 1,
-        marginBottom: 20,
+        marginLeft: 50,
+        marginTop: 40,
     },
-    buttonContainer2: {
-        marginTop: 200, // Ajuste mais flexível para o espaçamento entre o texto e o botão
+    buttonContainer: {
+        marginTop: 150, // Ajuste mais flexível para o espaçamento entre o texto e o botão
         padding: 10,
     },
     botaoVoltar: {
