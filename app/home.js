@@ -8,19 +8,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando íco
 
 const Home = () => {
 
-    const [encontrando, setEncontrando] = useState(false);
+    const [encontrando] = useState(false);
 
     const handleEncontrar = async () => {
-        try {
-            setEncontrando(true);
-            //await sendPasswordResetEmail(auth, email)
-            router.replace('/municipios');
-            setEncontrando(false);
-        } catch (error) {
-            console.error(error.code);
-            console.error(error.message);
-            setEncontrando(false);
-        }
+        router.replace('/municipios');
     };
 
     return (
@@ -48,7 +39,7 @@ const Home = () => {
                     icon={({ size, color }) => (
                         <MaterialCommunityIcons name="chevron-down" size={size} color={color} />
                     )}
-                    style={styles.button} // Adicionando o estilo para borda verde
+                    style={styles.botaoMunicipio} // Adicionando o estilo para borda verde
                 >
                     Escolha seu Município
                 </Button>
@@ -85,7 +76,7 @@ const styles = StyleSheet.create({
         marginTop: 20, // Ajuste mais flexível para o espaçamento entre o texto e o botão
         padding: 10,
     },
-    button: {
+    botaoMunicipio: {
         borderColor: 'green', // Definindo a borda como verde
         borderWidth: 1, // Espessura da borda
         borderRadius: 10,

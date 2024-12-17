@@ -1,26 +1,11 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
-import { Button, Avatar } from 'react-native-paper';
-import { router } from 'expo-router';
+import { Avatar, Button } from 'react-native-paper';
+import { router, Link } from 'expo-router';
 import auth from '../firebase.config';
 
 const Municipios = () => {
-
-    // const [encontrando, setEncontrando] = useState(false);
-
-    // const handleEncontrar = async () => {
-    //     try {
-    //         setEncontrando(true);
-    //         //await sendPasswordResetEmail(auth, email)
-    //         router.replace('/municipios');
-    //         setEncontrando(false);
-    //     } catch (error) {
-    //         console.error(error.code);
-    //         console.error(error.message);
-    //         setEncontrando(false);
-    //     }
-    // };
 
     return (
         <View style={styles.container}>
@@ -36,10 +21,13 @@ const Municipios = () => {
 
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
-{/* 
+
             <View style={styles.buttonContainer}>
-                <Button mode='contained' onPress={() => handleMunicipio()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
-            </View> */}
+                <Link href='/home' asChild>
+                    <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
+                </Link>
+            </View>
+
         </View>
     );
 }
@@ -69,13 +57,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     buttonContainer: {
-        marginTop: 20, // Ajuste mais flexível para o espaçamento entre o texto e o botão
+        marginTop: 200, // Ajuste mais flexível para o espaçamento entre o texto e o botão
         padding: 10,
     },
-    button: {
-        borderColor: 'green', // Definindo a borda como verde
-        borderWidth: 1, // Espessura da borda
-        borderRadius: 10,
+    botaoVoltar: {
+        backgroundColor: '#4CA04A',
+        borderRadius: 5,
+        padding: 10,
     }
 });
 
