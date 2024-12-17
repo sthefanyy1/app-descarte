@@ -5,7 +5,7 @@ import { Appbar, Avatar, Button } from 'react-native-paper';
 import { router, Link } from 'expo-router';
 import auth from '../firebase.config';
 
-const Municipios = () => {
+const Maceio = () => {
 
     return (
         <View style={styles.container}>
@@ -23,22 +23,11 @@ const Municipios = () => {
                 </Pressable>
             </View>
 
-            <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
             <Link href='/maceio' asChild>
                 <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Maceió</Button>
             </Link>
-
-            <Link href='/rioLargo' asChild>
-                <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Rio Largo</Button>
-            </Link>
-
-            {/* <View style={styles.buttonContainer}>
-                <Link href='/home' asChild>
-                    <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
-                </Link>
-            </View> */}
 
         </View>
     );
@@ -90,4 +79,4 @@ const styles = StyleSheet.create({
     // }
 });
 
-export default Municipios;
+export default Maceio;
