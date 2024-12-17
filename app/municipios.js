@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Avatar } from 'react-native-paper';
 import { router } from 'expo-router';
 import auth from '../firebase.config';
-import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícones
 
-const Home = () => {
+const Municipios = () => {
 
-    const [encontrando, setEncontrando] = useState(false);
+    // const [encontrando, setEncontrando] = useState(false);
 
-    const handleEncontrar = async () => {
-        try {
-            setEncontrando(true);
-            //await sendPasswordResetEmail(auth, email)
-            router.replace('/municipios');
-            setEncontrando(false);
-        } catch (error) {
-            console.error(error.code);
-            console.error(error.message);
-            setEncontrando(false);
-        }
-    };
+    // const handleEncontrar = async () => {
+    //     try {
+    //         setEncontrando(true);
+    //         //await sendPasswordResetEmail(auth, email)
+    //         router.replace('/municipios');
+    //         setEncontrando(false);
+    //     } catch (error) {
+    //         console.error(error.code);
+    //         console.error(error.message);
+    //         setEncontrando(false);
+    //     }
+    // };
 
     return (
         <View style={styles.container}>
@@ -37,22 +36,10 @@ const Home = () => {
 
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
-
+{/* 
             <View style={styles.buttonContainer}>
-                {/* Botão com ícone e borda verde */}
-                <Button 
-                    mode="outlined" 
-                    buttonColor='#f1f1f1' 
-                    textColor="green" 
-                    onPress={() => handleEncontrar()} loading={encontrando}
-                    icon={({ size, color }) => (
-                        <MaterialCommunityIcons name="chevron-down" size={size} color={color} />
-                    )}
-                    style={styles.button} // Adicionando o estilo para borda verde
-                >
-                    Escolha seu Município
-                </Button>
-            </View>
+                <Button mode='contained' onPress={() => handleMunicipio()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
+            </View> */}
         </View>
     );
 }
@@ -92,4 +79,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Home;
+export default Municipios;

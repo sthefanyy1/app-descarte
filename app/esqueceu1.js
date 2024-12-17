@@ -11,18 +11,6 @@ const Esqueceu = () => {
 
     const [email, setEmail] = React.useState('');
     const [redefinindo, setRedefinindo] = useState(false);
-    // const auth = getAuth();
-    // //auth.languageCode = 'pt';
-    // sendPasswordResetEmail(auth, email)
-    //     .then(() => {
-    //     // Password reset email sent!
-    //     // ..
-    // })
-    // .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ..
-    // });
 
     const handleRedefinir = async () => {
         try {
@@ -35,7 +23,7 @@ const Esqueceu = () => {
             console.error(error.message);
             setRedefinindo(false);
         }
-    }
+    };
 
     return (
             <View style={styles.container}>
@@ -60,10 +48,6 @@ const Esqueceu = () => {
                     activeUnderlineColor='#4CA04A'
                     label="Digite seu email"
                     />
-
-                    {/* <Link href='/esqueceu2' asChild>
-                        <Button mode='contained' style={styles.botaoAvance}>Avançar</Button>
-                    </Link> */}
 
                     <Button mode='contained' onPress={() => handleRedefinir()} loading={redefinindo} style={styles.botaoAvance}>Avançar</Button>
                 </View>
