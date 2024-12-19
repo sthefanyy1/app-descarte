@@ -33,7 +33,7 @@ const Home = () => {
                 {/* Botão com ícone e borda verde */}
                 <Button 
                     mode="outlined" 
-                    buttonColor='#f1f1f1' 
+                    buttonColor='#fff' 
                     textColor="green" 
                     onPress={() => handleEncontrar()} loading={encontrando}
                     icon={({ size, color }) => (
