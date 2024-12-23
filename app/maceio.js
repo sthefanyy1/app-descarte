@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, FlatList, Pressable } from 'react-native';
 import { Appbar, Avatar } from 'react-native-paper';
 import { useRouter } from 'expo-router';
-import { auth, db } from '../firebase.config'; // Certifique-se de que o caminho do firebase.config está correto
+import { auth, db } from '../firebase.config';
 import { collection, getDocs, query } from 'firebase/firestore';
 
 const Maceio = () => {
@@ -57,6 +57,7 @@ const Maceio = () => {
 
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
+            {loading && <Text>Carregando...</Text>} {/* Mostra o 'nome' carregando... antes de exibir os pontos*/}
             {/* FlatList para renderizar os pontos */}
             <FlatList
                 data={pontos}
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     },
     tarefa: {
         backgroundColor: '#f9f9f9',
-        borderBlockColor: '#4CA04A',
+        //borderBlockColor: '#4CA04A',
         padding: 10,
         marginTop: 20,
         marginBottom: 15,
