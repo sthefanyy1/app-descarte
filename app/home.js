@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Avatar } from 'react-native-paper';
 import { router } from 'expo-router';
-import auth from '../firebase.config';
+import { auth } from '../firebase.config';
 import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícones
 
 const Home = () => {

@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Appbar, Avatar, Button } from 'react-native-paper';
 import { router, Link } from 'expo-router';
-import auth from '../firebase.config';
+import { auth } from '../firebase.config';
 
 const Maceio = () => {
 

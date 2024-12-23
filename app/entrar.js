@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router, useRouter } from 'expo-router';
-import auth from '../firebase.config';
+import { auth } from '../firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Entrar = () => {

@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-import auth from '../firebase.config';
+import { auth } from '../firebase.config';
 import { sendPasswordResetEmail } from "firebase/auth";
 
 const Esqueceu = () => {
