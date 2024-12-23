@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, StyleSheet, Text, FlatList, Pressable } from 'react-native';
+import { View, Image, StyleSheet, Text, FlatList, Pressable, ActivityIndicator } from 'react-native';
 import { Appbar, Avatar } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 import { auth, db } from '../firebase.config';
@@ -57,14 +57,16 @@ const Maceio = () => {
 
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
-            {loading && <Text>Carregando...</Text>} {/* Mostra o 'nome' carregando... antes de exibir os pontos*/}
-            {/* FlatList para renderizar os pontos */}
-            <FlatList
-                data={pontos}
-                renderItem={({ item }) => (
-                    <Tarefa nome={item.nome} endereco={item.endereco} telefone={item.telefone} />
-                )}
-            />
+            {loading ? (
+                <ActivityIndicator />
+            ) : (
+                <FlatList
+                    data={pontos}
+                    renderItem={({ item }) => (
+                        <Tarefa nome={item.nome} endereco={item.endereco} telefone={item.telefone} router={router} />
+                    )}
+                />
+            )}
         </View>
     );
 };
