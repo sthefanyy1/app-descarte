@@ -1,20 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
-import { Appbar, Avatar, Button } from 'react-native-paper';
-import { router, Link } from 'expo-router';
-import { auth } from '../firebase.config';
+import { View, Image, StyleSheet, Text, FlatList, Pressable } from 'react-native';
+import { Appbar, Avatar } from 'react-native-paper';
+import { useRouter } from 'expo-router';
+import { auth, db } from '../firebase.config'; // Certifique-se de que o caminho do firebase.config está correto
+import { collection, getDocs, query } from 'firebase/firestore';
 
 const Maceio = () => {
+    const [loading, setLoading] = useState(true);
+    const [pontos, setPontos] = useState([]);
+    //const user = auth.currentUser;
+    const router = useRouter();
+
+    // Função para buscar os pontos de coleta
+    const getAllPontos = async () => {
+        try {
+            setLoading(true);
+            const querySnapshot = await getDocs(query(collection(db, "pontos")));
+            const array = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            setPontos(array);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getAllPontos();
+    }, []);
+
+    // Componente Tarefa que será usado na FlatList
+    const Tarefa = ({ nome, endereco, telefone }) => (
+        <View style={styles.tarefa}>
+            <Text style={styles.nome}>{nome}</Text>
+            <Text style={styles.titulo}>{endereco}</Text>
+            <Text>{telefone}</Text>
+        </View>
+    );
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
 
             <Appbar.Header style={styles.header}>
-                <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
             </Appbar.Header>
-            
+
             {/* Contêiner para logo e avatar */}
             <View style={styles.header}>
                 <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
@@ -25,13 +57,16 @@ const Maceio = () => {
 
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
-            <Link href='/maceio' asChild>
-                <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Maceió</Button>
-            </Link>
-
+            {/* FlatList para renderizar os pontos */}
+            <FlatList
+                data={pontos}
+                renderItem={({ item }) => (
+                    <Tarefa nome={item.nome} endereco={item.endereco} telefone={item.telefone} />
+                )}
+            />
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -40,14 +75,14 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        justifyContent: 'flex-start', // Isso vai alinhar os elementos no topo
+        justifyContent: 'flex-start',
     },
     header: {
         backgroundColor: '#fff',
-        flexDirection: 'row', // Alinha logo e avatar lado a lado
-        justifyContent: 'space-between', // Dá um espaço entre os dois
-        alignItems: 'center', // Alinha ambos verticalmente ao centro
-        marginBottom: 20, // Espaçamento entre a parte superior e o conteúdo abaixo
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 20,
     },
     logotipo: {
         width: 150,
@@ -58,25 +93,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    botaoMunicipio: {
-        backgroundColor: 'white',
-        borderColor: 'green',
+    tarefa: {
+        backgroundColor: '#f9f9f9',
+        borderBlockColor: '#4CA04A',
+        padding: 10,
+        marginTop: 20,
+        marginBottom: 15,
         borderRadius: 5,
         borderWidth: 1,
-        padding: 10,
-        width: 250,
-        marginLeft: 50,
-        marginTop: 40,
+        borderColor: '#ddd',
     },
-    // buttonContainer: {
-    //     marginTop: 150, // Ajuste mais flexível para o espaçamento entre o texto e o botão
-    //     padding: 10,
-    // },
-    // botaoVoltar: {
-    //     backgroundColor: '#4CA04A',
-    //     borderRadius: 5,
-    //     padding: 10,
-    // }
+    titulo: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
 });
 
 export default Maceio;
