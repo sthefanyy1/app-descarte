@@ -34,7 +34,7 @@ const Maceio = () => {
     const Tarefa = ({ nome, endereco, telefone }) => (
         <View style={styles.tarefa}>
             <Text style={styles.nome}>{nome}</Text>
-            <Text style={styles.titulo}>{endereco}</Text>
+            <Text style={styles.endereco}>{endereco}</Text>
             <Text>{telefone}</Text>
         </View>
     );
@@ -98,15 +98,14 @@ const styles = StyleSheet.create({
     },
     tarefa: {
         backgroundColor: '#f9f9f9',
-        //borderBlockColor: '#4CA04A',
+        borderColor: '#4CA04A',
         padding: 10,
         marginTop: 20,
         marginBottom: 15,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#ddd',
     },
-    titulo: {
+    nome: {
         fontSize: 18,
         fontWeight: 'bold',
     },
