@@ -34,12 +34,6 @@ const Municipios = () => {
                 <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Rio Largo</Button>
             </Link>
 
-            {/* <View style={styles.buttonContainer}>
-                <Link href='/home' asChild>
-                    <Button mode='contained' style={styles.botaoVoltar}>Voltar</Button>
-                </Link>
-            </View> */}
-
         </View>
     );
 }
@@ -70,7 +64,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     botaoMunicipio: {
-        backgroundColor: 'white',
+        backgroundColor: '#f9f9f9',
         borderColor: 'green',
         borderRadius: 5,
         borderWidth: 1,
@@ -79,15 +73,6 @@ const styles = StyleSheet.create({
         marginLeft: 50,
         marginTop: 40,
     },
-    // buttonContainer: {
-    //     marginTop: 150, // Ajuste mais flexível para o espaçamento entre o texto e o botão
-    //     padding: 10,
-    // },
-    // botaoVoltar: {
-    //     backgroundColor: '#4CA04A',
-    //     borderRadius: 5,
-    //     padding: 10,
-    // }
 });
 
 export default Municipios;
