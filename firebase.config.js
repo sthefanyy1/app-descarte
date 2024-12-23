@@ -27,5 +27,5 @@ const auth = initializeAuth(app, {
 // Initialize Cloud Firestore and get a reference to the service
 //const db = getFirestore(app);
 
-//export default { auth, db }; //Não pegour
+//export default { auth, db }; //Não pegou
 export default auth; 
