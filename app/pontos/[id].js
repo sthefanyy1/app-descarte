@@ -35,8 +35,8 @@ const Id = () => {
                 <ActivityIndicator />
             ) : (
                 <>
-                    <Text>{pontos.nome}</Text>
-                    <Text>Endereço: {pontos.endereco}</Text>
+                    <Text>{pontos.nome}{'\n'}{'\n'}</Text>
+                    <Text>Endereço: {pontos.endereco}{'\n'}{'\n'}</Text>
                     <Text>Contato: {pontos.telefone}</Text>
                 </>
             )}
