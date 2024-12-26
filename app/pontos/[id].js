@@ -35,7 +35,7 @@ const Id = () => {
                 <ActivityIndicator />
             ) : (
                 <>
-                    <Text>Título: {pontos.endereco}</Text>
+                    <Text>Endereço: {pontos.endereco}</Text>
                 </>
             )}
         </View>
