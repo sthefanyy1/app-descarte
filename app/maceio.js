@@ -30,6 +30,10 @@ const Maceio = () => {
         getAllPontos();
     }, []);
 
+    const handleGetPontos = (id) => {
+        router.navigate({ pathname: '/pontos/[id]', params: { id: id } });
+    };
+
     // Componente Tarefa que será usado na FlatList
     const Pontos = ({ nome, endereco, telefone, onPress }) => (
         <Card style={styles.pontos}>
@@ -74,10 +78,11 @@ const Maceio = () => {
                             nome={item.nome} 
                             endereco={item.endereco} 
                             telefone={item.telefone} 
-                            onPress={() => router.navigate(`/ponto/${item.id}`)} // Navegação para detalhes do ponto
+                            onPress={() => handleGetPontos(item.id)}
+                            // onPress={() => router.navigate(`/ponto/${item.id}`)}
                         />
                     )}
-                    keyExtractor={(item) => item.id}
+                    //keyExtractor={(item) => item.id}
                 />
             )}
         </View>
