@@ -1,6 +1,7 @@
 import { View, Text, ActivityIndicator, StyleSheet, Pressable, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Appbar, Avatar } from 'react-native-paper';
+import MapView from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import { router, useLocalSearchParams } from 'expo-router';
 import { doc, getDoc } from 'firebase/firestore';
@@ -47,14 +48,20 @@ const Id = () => {
                     </Pressable>
                 </View>
 
+                <View style={styles.container}>
+                    <MapView style={styles.map} />
+                </View>
+
             {loading ? (
                 <ActivityIndicator />
             ) : (
                 <>
                     <Text style={styles.texto}>{pontos.nome}{'\n'}{'\n'}</Text>
                     <Text style={styles.endereco}>Endereço: {pontos.endereco}{'\n'}{'\n'}</Text>
+                    <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
                     <Text style={styles.contato}>Contato: {pontos.telefone}</Text>
                 </>
+
             )}
         </View>
     )
@@ -89,9 +96,19 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         fontSize: 16,
     },
+    aberto: {
+        marginLeft: 20,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#4CA04A',
+    },
     contato: {
         marginLeft: 20,
         fontSize: 16,
+    },
+    map: {
+        width: '100%',
+        height: '100%',
     },
 });
 
