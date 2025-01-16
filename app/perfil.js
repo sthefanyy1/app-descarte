@@ -39,7 +39,7 @@ const Perfil = () => {
             <StatusBar style="auto" />
 
                 <Appbar.Header style={styles.header}>
-                        <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                        <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
                 </Appbar.Header>
 
                 <View style={styles.content}>
@@ -51,16 +51,16 @@ const Perfil = () => {
                         style={styles.inputNome}
                         value={nome}
                         onChangeText={setNome}
-                        textColor="#4CA04A"
+                        textColor="#346E33"
                         autoCapitalize='none'
                         keyboardType='name'
-                        activeUnderlineColor='#4CA04A'
+                        activeUnderlineColor='#346E33'
                         label="Digite seu nome"
                     />
 
                     <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
 
-                    <Button mode='contained' textColor='#4CA04A' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
+                    <Button mode='contained' textColor='#346E33' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
                 </View>
 
             </View>
@@ -95,11 +95,11 @@ const styles = StyleSheet.create({
     },
     inputNome: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
         //marginTop: -150,
     },
     botaoPronto: {
-        backgroundColor: '#4CA04A',
+        backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
     },
