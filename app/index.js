@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   texto: {
-    color: '#4CA04A',
+    color: '#346E33',
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -48,14 +48,14 @@ const styles = StyleSheet.create({
   },
   botaoEntrar: {
     marginTop: 150,
-    backgroundColor: '#4CA04A',
+    backgroundColor: '#346E33',
     borderRadius: 5,
     width: 250,
     padding: 10,
   },
   botaoCadastrar: {
     marginTop: 20,
-    backgroundColor: '#4CA04A',
+    backgroundColor: '#346E33',
     borderRadius: 5,
     width: 250,
     padding: 10,
