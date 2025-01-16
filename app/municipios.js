@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     botaoMunicipio: {
         backgroundColor: '#f9f9f9',
-        borderColor: 'green',
+        borderColor: '#346E33',
         borderRadius: 5,
         borderWidth: 1,
         padding: 10,
