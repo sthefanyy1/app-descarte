@@ -12,7 +12,7 @@ const Municipios = () => {
             <StatusBar style="auto" />
 
             <Appbar.Header style={styles.header}>
-                <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
             </Appbar.Header>
             
             {/* Contêiner para logo e avatar */}
