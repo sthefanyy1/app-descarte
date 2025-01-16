@@ -11,16 +11,46 @@ const Id = () => {
     const { id } = useLocalSearchParams();
     const [loading, setLoading] = useState(true);
     const [pontos, setPontos] = useState({});
+    const [latitude, setLatitude] = useState('')
+    const [longitude, setLongitude] = useState('')
+
+    const array = {
+        gruta: {
+          id: "Ad659efxPyJMyIi8D0CY",
+          latitude: -9.651443,
+          longitude: -35.727385
+        },
+        teste: {
+            id: "Ad659efxPyJMyIi8D0CY",
+            latitude: -9.5170213343511,
+            longitude: -35.80670592516275
+          },
+      };
+      
    
     const getPontos = async () => {
         try {
             const docRef = doc(db, "pontos", id);
+
+            // Pegar loc por array
+            if(id == array.gruta.id){
+                
+                setLatitude(array.gruta.latitude);
+                setLongitude(array.gruta.longitude);
+            } else{
+                console.log('Entrou em Teste')
+                setLatitude(array.teste.latitude);
+                setLongitude(array.teste.longitude); 
+            }
+
             const docSnap = await getDoc(docRef);
+
             if (docSnap.exists()) {
                 setPontos(docSnap.data());
             } else {
                 console.log("Erro");
             }
+
         } catch (error) {
             console.error(error);
         } finally {
@@ -39,12 +69,12 @@ const Id = () => {
                  <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header> 
-
+                
                 <View style={styles.container}>
                     <MapView style={styles.map} 
                         initialRegion={{
-                            latitude: -9.651443,
-                            longitude: -35.727385,
+                            latitude: latitude,
+                            longitude: longitude,
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
