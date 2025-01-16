@@ -47,7 +47,7 @@ const Cadastrar = () => {
             <View>
             <StatusBar style="auto" />
                 <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
+                    <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header>
 
                 <Text style={styles.texto}>Olá! {'\n'}Vamos começar? </Text>
@@ -57,10 +57,10 @@ const Cadastrar = () => {
                 style={styles.inputNome}
                 value={nome}
                 onChangeText={setNome}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 keyboardType='name'
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Digite seu nome"
             />
 
@@ -68,10 +68,10 @@ const Cadastrar = () => {
                 style={styles.inputEmail}
                 value={email}
                 onChangeText={setEmail}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 keyboardType='email-address'
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Digite seu e-mail"
             />
 
@@ -79,7 +79,7 @@ const Cadastrar = () => {
                 style={styles.inputSenha}
                 value={senha}
                 onChangeText={setSenha}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 secureTextEntry={!senhaVisivel} // Controla visibilidade da senha
                 right={
@@ -89,7 +89,7 @@ const Cadastrar = () => {
                     />
                 }
                 maxLength={6}
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Digite sua senha"
             />
 
@@ -97,7 +97,7 @@ const Cadastrar = () => {
                 style={styles.inputSenha}
                 value={confirmar}
                 onChangeText={setConfirmar}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 secureTextEntry={!confirmarVisivel} // Controla visibilidade da confirmação
                 right={
@@ -107,7 +107,7 @@ const Cadastrar = () => {
                     />
                 }
                 maxLength={6} // Limite de 6 digitos
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Confirme sua senha"
             />
 
@@ -138,18 +138,18 @@ const styles = StyleSheet.create({
     },
     inputNome: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     inputEmail: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     inputSenha: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     botaoEntre: {
-        backgroundColor: '#4CA04A',
+        backgroundColor: '#346E33',
         borderRadius: 5,
         marginTop: 10,
         padding: 10,
