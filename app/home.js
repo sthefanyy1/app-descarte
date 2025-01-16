@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     botaoMunicipio: {
-        borderColor: 'green', // Definindo a borda como verde
+        borderColor: '#346E33', // Definindo a borda como verde
         borderWidth: 1, // Espessura da borda
         borderRadius: 10,
     }
