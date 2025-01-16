@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, StyleSheet, Text, FlatList, Pressable, ActivityIndicator } from 'react-native';
-import { Appbar, Avatar, Card, Button } from 'react-native-paper';
+import { View, StyleSheet, Text, FlatList, ActivityIndicator } from 'react-native';
+import { Appbar, Card, Button } from 'react-native-paper';
 import { useRouter } from 'expo-router';
-import { auth, db } from '../firebase.config';
+import { db } from '../firebase.config';
 import { collection, getDocs, query } from 'firebase/firestore';
 
 const Maceio = () => {
@@ -58,14 +58,6 @@ const Maceio = () => {
                 <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
             </Appbar.Header>
 
-            {/* Contêiner para logo e avatar */}
-            <View style={styles.header}>
-                <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
-                <Pressable onPress={() => router.navigate('/perfil')}>
-                    <Avatar.Text size={50} label={auth.currentUser.displayName.charAt(0)} />
-                </Pressable>
-            </View>
-
             <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
 
             {loading ? (
@@ -104,10 +96,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
-    },
-    logotipo: {
-        width: 150,
-        height: 150,
     },
     texto: {
         marginLeft: 20,
