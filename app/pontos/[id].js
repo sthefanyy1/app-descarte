@@ -1,11 +1,11 @@
-import { View, Text, ActivityIndicator, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Appbar, Avatar } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 import MapView from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import { router, useLocalSearchParams } from 'expo-router';
 import { doc, getDoc } from 'firebase/firestore';
-import { auth, db } from '../../firebase.config';
+import { db } from '../../firebase.config';
 
 const Id = () => {
     const { id } = useLocalSearchParams();
@@ -39,14 +39,6 @@ const Id = () => {
                  <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
                 </Appbar.Header> 
-
-                {/* Contêiner para logo e avatar */}
-                <View style={styles.header}>
-                    <Image source={require('../../assets/logo.jpeg')} style={styles.logotipo} /> 
-                    <Pressable onPress={() => router.navigate('/perfil')}>
-                        <Avatar.Text size={50} label={auth.currentUser.displayName.charAt(0)} />
-                    </Pressable>
-                </View>
 
                 <View style={styles.container}>
                     <MapView style={styles.map} />
@@ -82,10 +74,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
-    },
-    logotipo: {
-        width: 150,
-        height: 150,
     },
     texto: {
         marginLeft: 40,
