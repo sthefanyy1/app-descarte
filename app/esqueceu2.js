@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     botaoEntrar: {
-        backgroundColor: '#4CA04A',
+        backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
     }

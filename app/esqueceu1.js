@@ -30,7 +30,7 @@ const Esqueceu = () => {
             <StatusBar style="auto" />
 
                 <Appbar.Header style={styles.header}>
-                        <Appbar.BackAction onPress={() => {router.back()}} color="#4CA04A" />
+                        <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
                 </Appbar.Header>
 
                 <View style={styles.content}>
@@ -42,10 +42,10 @@ const Esqueceu = () => {
                     <TextInput style={styles.inputEmail}
                     defaultValue={email}
                     onChangeText={setEmail}
-                    textColor="#4CA04A"
+                    textColor="#346E33"
                     autoCapitalize='none'
                     keyboardType='email-address'
-                    activeUnderlineColor='#4CA04A'
+                    activeUnderlineColor='#346E33'
                     label="Digite seu email"
                     />
 
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     },
     inputEmail: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
         //marginTop: -150,
     },
     botaoAvance: {
-        backgroundColor: '#4CA04A',
+        backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
     }
