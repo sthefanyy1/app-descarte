@@ -37,7 +37,7 @@ const Id = () => {
             <StatusBar style="auto" />
 
                  <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
+                    <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header> 
 
                 <View style={styles.container}>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     contato: {
         marginLeft: 20,
