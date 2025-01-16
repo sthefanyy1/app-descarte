@@ -43,7 +43,7 @@ const Maceio = () => {
                 <Text>{telefone}</Text>
             </Card.Content>
             <Card.Actions>
-                <Button onPress={onPress} mode="contained" style={{ backgroundColor: '#4CA04A' }}>
+                <Button onPress={onPress} mode="contained" style={{ backgroundColor: '#346E33' }}>
                     Ver mais detalhes
                 </Button>
             </Card.Actions>
@@ -55,7 +55,7 @@ const Maceio = () => {
             <StatusBar style="auto" />
 
             <Appbar.Header style={styles.header}>
-                <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
+                <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
             </Appbar.Header>
 
             <Text style={styles.texto}>Pontos de coleta:{'\n'}</Text>
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     pontos: {
         backgroundColor: '#f9f9f9',
-        borderColor: '#4CA04A',
+        borderColor: '#346E33',
         padding: 10,
         marginTop: 20,
         marginBottom: 15,
