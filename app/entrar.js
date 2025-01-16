@@ -91,7 +91,7 @@ const Entrar = () => {
             <View>
             <StatusBar style="auto" />
                 <Appbar.Header style={styles.header}>
-                    <Appbar.BackAction onPress={() => { router.back() }} color="#4CA04A" />
+                    <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header>
 
                 <Text style={styles.texto}>Bem-vindo(a) de volta! {'\n'}Faça seu login </Text>
@@ -101,10 +101,10 @@ const Entrar = () => {
                 style={styles.inputEmail}
                 value={email}
                 onChangeText={setEmail}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 keyboardType='email-address'
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Digite seu e-mail"
             />
 
@@ -112,7 +112,7 @@ const Entrar = () => {
                 style={styles.inputSenha}
                 value={senha}
                 onChangeText={setSenha}
-                textColor="#4CA04A"
+                textColor="#346E33"
                 autoCapitalize='none'
                 secureTextEntry={!senhaVisivel} // Controla se a senha está oculta
                 right={
@@ -122,7 +122,7 @@ const Entrar = () => {
                     />
                 }
                 maxLength={6} // Limite de 6 digitos
-                activeUnderlineColor='#4CA04A'
+                activeUnderlineColor='#346E33'
                 label="Digite sua senha"
             />
 
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
     },
     inputEmail: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     inputSenha: {
         backgroundColor: '#fff',
-        color: '#4CA04A',
+        color: '#346E33',
     },
     textoEsqueceu: {
         color: '#000000',
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     botaoEntre: {
-        backgroundColor: '#4CA04A',
+        backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
     },
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     fazerConta: {
-        color: '#4CA04A',
+        color: '#346E33',
         fontWeight: 'bold',
         fontSize: 15,
         textAlign: 'center',
