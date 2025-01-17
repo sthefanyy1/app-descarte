@@ -20,11 +20,31 @@ const Id = () => {
           latitude: -9.651443,
           longitude: -35.727385
         },
-        teste: {
-            id: "Ad659efxPyJMyIi8D0CY",
-            latitude: -9.5170213343511,
-            longitude: -35.80670592516275
-          },
+        santaMaria: {
+            id: "EiVz5PFmTp5KduApIKwW",
+            latitude: -9.5396101,
+            longitude: -35.7930455
+        },
+        diqueEstrada: {
+            id: "JnMGA1e0blRVls52iuw5",
+            latitude: -9.1,
+            longitude: -35.7
+        },
+        santaLucia: {
+            id: "LrJGfgeuKUuPLZPE01xt",
+            latitude: -9.5839069,
+            longitude: -35.7505028
+        },
+        pajucara: {
+            id: "Y7xNmveISfDanQhq2NSK",
+            latitude: -9.6617162,
+            longitude: -35.7159619
+        },
+        tabuleiro: {
+            id: "nR7Ih8Wx0GqSYmQp3p64",
+            latitude: -9.5930255,
+            longitude: -35.7709898
+        }
       };
       
    
@@ -34,13 +54,34 @@ const Id = () => {
 
             // Pegar loc por array
             if(id == array.gruta.id){
-                
+                console.log('Entrou em Gruta');
                 setLatitude(array.gruta.latitude);
                 setLongitude(array.gruta.longitude);
-            } else{
-                console.log('Entrou em Teste')
-                setLatitude(array.teste.latitude);
-                setLongitude(array.teste.longitude); 
+            } 
+            // else if(id == array.santaMaria.id){
+            //     console.log('Entrou em Santa Maria');
+            //     setLatitude(array.santaMaria.latitude);
+            //     setLongitude(array.santaMaria.longitude);
+            // } 
+            // else if(id == array.diqueEstrada.id){
+            //     console.log('Entrou em Dique Estrada');
+            //     setLatitude(array.diqueEstrada.latitude);
+            //     setLongitude(array.diqueEstrada.longitude);
+            // } 
+            // else if(id == array.santaLucia.id){
+            //     console.log('Entrou em Santa Lucia');
+            //     setLatitude(array.santaLucia.latitude);
+            //     setLongitude(array.santaLucia.longitude);
+            // } 
+            // else if(id == array.pajucara.id){
+            //     console.log('Entrou em Pajuçara');
+            //     setLatitude(array.pajucara.latitude);
+            //     setLongitude(array.pajucara.longitude);
+            // } 
+            else{
+                console.log('Entrou em Tabuleiro');
+                setLatitude(array.tabuleiro.latitude);
+                setLongitude(array.tabuleiro.longitude); 
             }
 
             const docSnap = await getDoc(docRef);
