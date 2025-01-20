@@ -14,15 +14,15 @@ const Id = () => {
    
     const getPonto = async () => {
         try {
-            console.log('1');
+            //console.log('1');
             const docRef = doc(db, "pontos", id);
-            console.log('2');
+            //console.log('2');
             const docSnap = await getDoc(docRef);
-            console.log('3');
+            //console.log('3');
 
             if (docSnap.exists()) {
                 setPonto(docSnap.data());
-                console.log(ponto);
+                //console.log(ponto);
             } else {
                 console.log("Erro");
             }
