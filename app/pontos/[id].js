@@ -42,7 +42,7 @@ const Id = () => {
         <View style={styles.container}>
             <StatusBar style="auto" />
 
-                 <Appbar.Header style={styles.header}>
+                <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header> 
 
@@ -59,7 +59,7 @@ const Id = () => {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
-                    />
+                />
             </View>
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
                     <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
