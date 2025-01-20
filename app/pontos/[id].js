@@ -73,7 +73,7 @@ const Id = () => {
                         longitudeDelta: 0.0421,
                     }}
                     />
-                </View>
+            </View>
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
                     <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
                     <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
