@@ -10,84 +10,21 @@ import { db } from '../../firebase.config';
 const Id = () => {
     const { id } = useLocalSearchParams();
     const [loading, setLoading] = useState(true);
-    const [pontos, setPontos] = useState({});
-    const [latitude, setLatitude] = useState('')
-    const [longitude, setLongitude] = useState('')
-
-    const array = {
-        gruta: {
-          id: "Ad659efxPyJMyIi8D0CY",
-          latitude: -9.651443,
-          longitude: -35.727385
-        },
-        santaMaria: {
-            id: "EiVz5PFmTp5KduApIKwW",
-            latitude: -9.5396101,
-            longitude: -35.7930455
-        },
-        diqueEstrada: {
-            id: "JnMGA1e0blRVls52iuw5",
-            latitude: -9.1,
-            longitude: -35.7
-        },
-        santaLucia: {
-            id: "LrJGfgeuKUuPLZPE01xt",
-            latitude: -9.5839069,
-            longitude: -35.7505028
-        },
-        pajucara: {
-            id: "Y7xNmveISfDanQhq2NSK",
-            latitude: -9.6617162,
-            longitude: -35.7159619
-        },
-        tabuleiro: {
-            id: "nR7Ih8Wx0GqSYmQp3p64",
-            latitude: -9.5930255,
-            longitude: -35.7709898
-        }
-      };
-      
+    const [ponto, setPonto] = useState({});
+    //const [latitude, setLatitude] = useState('')
+    //const [longitude, setLongitude] = useState('')
    
-    const getPontos = async () => {
+    const getPonto = async () => {
         try {
+            console.log('1');
             const docRef = doc(db, "pontos", id);
-
-            // Pegar loc por array
-            if(id == array.gruta.id){
-                console.log('Entrou em Gruta');
-                setLatitude(array.gruta.latitude);
-                setLongitude(array.gruta.longitude);
-            } 
-            // else if(id == array.santaMaria.id){
-            //     console.log('Entrou em Santa Maria');
-            //     setLatitude(array.santaMaria.latitude);
-            //     setLongitude(array.santaMaria.longitude);
-            // } 
-            // else if(id == array.diqueEstrada.id){
-            //     console.log('Entrou em Dique Estrada');
-            //     setLatitude(array.diqueEstrada.latitude);
-            //     setLongitude(array.diqueEstrada.longitude);
-            // } 
-            // else if(id == array.santaLucia.id){
-            //     console.log('Entrou em Santa Lucia');
-            //     setLatitude(array.santaLucia.latitude);
-            //     setLongitude(array.santaLucia.longitude);
-            // } 
-            // else if(id == array.pajucara.id){
-            //     console.log('Entrou em Pajuçara');
-            //     setLatitude(array.pajucara.latitude);
-            //     setLongitude(array.pajucara.longitude);
-            // } 
-            else{
-                console.log('Entrou em Tabuleiro');
-                setLatitude(array.tabuleiro.latitude);
-                setLongitude(array.tabuleiro.longitude); 
-            }
-
+            console.log('2');
             const docSnap = await getDoc(docRef);
+            console.log('3');
 
             if (docSnap.exists()) {
-                setPontos(docSnap.data());
+                setPonto(docSnap.data());
+                console.log(ponto);
             } else {
                 console.log("Erro");
             }
@@ -100,7 +37,7 @@ const Id = () => {
     };
 
     useEffect(() => {
-        getPontos();
+        getPonto();
     }, []);
 
     return (
@@ -111,25 +48,36 @@ const Id = () => {
                     <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header> 
                 
-                <View style={styles.container}>
+                {/* <View style={styles.container}>
                     <MapView style={styles.map} 
                         initialRegion={{
-                            latitude: latitude,
-                            longitude: longitude,
+                            latitude: ponto.coordenadas.latitude,
+                            longitude: ponto.coordenadas.longitude,
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
                     />
-                </View>
+                </View> */}
 
             {loading ? (
                 <ActivityIndicator />
             ) : (
                 <>
-                    <Text style={styles.texto}>{pontos.nome}{'\n'}{'\n'}</Text>
-                    <Text style={styles.endereco}>Endereço: {pontos.endereco}{'\n'}{'\n'}</Text>
+
+            <View style={styles.container}>
+                <MapView style={styles.map} 
+                    initialRegion={{
+                        latitude: ponto.coordenadas.latitude,
+                        longitude: ponto.coordenadas.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                    />
+                </View>
+                    <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
+                    <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
                     <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
-                    <Text style={styles.contato}>Contato: {pontos.telefone}</Text>
+                    <Text style={styles.contato}>Contato: {ponto.telefone}</Text>
                 </>
 
             )}
