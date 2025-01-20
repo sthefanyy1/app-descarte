@@ -11,8 +11,6 @@ const Id = () => {
     const { id } = useLocalSearchParams();
     const [loading, setLoading] = useState(true);
     const [ponto, setPonto] = useState({});
-    //const [latitude, setLatitude] = useState('')
-    //const [longitude, setLongitude] = useState('')
    
     const getPonto = async () => {
         try {
@@ -47,17 +45,6 @@ const Id = () => {
                  <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
                 </Appbar.Header> 
-                
-                {/* <View style={styles.container}>
-                    <MapView style={styles.map} 
-                        initialRegion={{
-                            latitude: ponto.coordenadas.latitude,
-                            longitude: ponto.coordenadas.longitude,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421,
-                        }}
-                    />
-                </View> */}
 
             {loading ? (
                 <ActivityIndicator />
