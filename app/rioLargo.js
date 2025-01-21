@@ -16,7 +16,7 @@ const RioLargo = () => {
                 <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
             </Appbar.Header>
 
-            <Text style={styles.texto}>Não há pontos de coletas cadastrados em Rio Largo.{'\n'}</Text>
+            <Text style={styles.texto}>Não há pontos de coletas cadastrados em Rio Largo.</Text>
         </View>
     );
 }
