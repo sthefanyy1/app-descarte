@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Appbar } from 'react-native-paper';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
@@ -12,7 +12,7 @@ const Id = () => {
     const { id } = useLocalSearchParams();
     const [loading, setLoading] = useState(true);
     const [ponto, setPonto] = useState({});
-   
+
     const getPonto = async () => {
         try {
             const docRef = doc(db, "pontos", id);
@@ -23,9 +23,9 @@ const Id = () => {
             } else {
                 console.log("Erro");
             }
-
         } catch (error) {
             console.error(error);
+            setLoading(false);
         } finally {
             setLoading(false);
         }
@@ -48,24 +48,31 @@ const Id = () => {
             ) : (
                 <>
                     <View style={styles.container}>
-                        <MapView style={styles.map} 
-                            initialRegion={{
-                                latitude: ponto.coordenadas.latitude,
-                                longitude: ponto.coordenadas.longitude,
-                                latitudeDelta: 0.0922,
-                                longitudeDelta: 0.0421,
+                        <MapView style={styles.map}
+                            initialCamera={{
+                                center: {
+                                    latitude: ponto.coordenadas.latitude,
+                                    longitude: ponto.coordenadas.longitude,
+                                },
+                                pitch: 45,
+                                heading: 90,
+                                altitude: 1000,
+                                zoom: 15,
                             }}
                         >
-                            <Marker
+                            
+                        <Marker
+                                identifier={id}
                                 coordinate={{
                                     latitude: ponto.coordenadas.latitude,
                                     longitude: ponto.coordenadas.longitude
                                 }}
                                 title={ponto.nome}
                                 description={ponto.endereco}
-                            />
+                        />
                         </MapView>
                     </View>
+                    
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
                     <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
                     <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
