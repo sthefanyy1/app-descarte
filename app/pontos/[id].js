@@ -47,7 +47,7 @@ const Id = () => {
                 <ActivityIndicator />
             ) : (
                 <>
-                    <View style={styles.container}>
+                    <View style={styles.mapContainer}>
                         <MapView style={styles.map}
                             initialCamera={{
                                 center: {
@@ -74,9 +74,16 @@ const Id = () => {
                     </View>
                     
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
+                    
                     <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
                     <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
-                    <Text style={styles.contato}>Contato: {ponto.telefone}</Text>
+                    <Text style={styles.contato}>Contato: {ponto.telefone}{'\n'}{'\n'}</Text>
+                    <Text style={styles.descricaoPode}>Pode descartar: {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Entulhos da construção civil (até 1m³); {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Móveis e eletrodomésticos inservíveis; {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Restos de poda de árvore; {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Materiais recicláveis. {'\n'}{'\n'}</Text>
+
                 </>
             )}
         </View>
@@ -118,9 +125,24 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         fontSize: 16,
     },
+    mapContainer: {
+        width: '100%',
+        height: 300, // ajusta a altura do mapa conforme necessário
+        marginBottom: 20, 
+    },
     map: {
         width: '100%',
         height: '100%',
+    },
+    descricaoPode: {
+        marginLeft: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#346E33',
+    },
+    descricao: {
+        marginLeft: 20,
+        fontSize: 18,
     },
 });
 
