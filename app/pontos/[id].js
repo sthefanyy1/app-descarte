@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, ScrollView } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import { Appbar } from 'react-native-paper';
 import MapView from 'react-native-maps';
@@ -47,6 +47,7 @@ const Id = () => {
                 <ActivityIndicator />
             ) : (
                 <>
+                
                     <View style={styles.mapContainer}>
                         <MapView style={styles.map}
                             initialCamera={{
@@ -74,15 +75,26 @@ const Id = () => {
                     </View>
                     
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
-                    
+
+                    <ScrollView>
                     <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
+
                     <Text style={styles.aberto}>Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}</Text>
+
                     <Text style={styles.contato}>Contato: {ponto.telefone}{'\n'}{'\n'}</Text>
+
                     <Text style={styles.descricaoPode}>Pode descartar: {'\n'}{'\n'}</Text>
-                    <Text style={styles.descricao}>- Entulhos da construção civil (até 1m³); {'\n'}{'\n'}</Text>
-                    <Text style={styles.descricao}>- Móveis e eletrodomésticos inservíveis; {'\n'}{'\n'}</Text>
-                    <Text style={styles.descricao}>- Restos de poda de árvore; {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Entulhos da construção civil (até 1m³); {'\n'}</Text>
+                    <Text style={styles.descricao}>- Móveis e eletrodomésticos inservíveis; {'\n'}</Text>
+                    <Text style={styles.descricao}>- Restos de poda de árvore; {'\n'}</Text>
                     <Text style={styles.descricao}>- Materiais recicláveis. {'\n'}{'\n'}</Text>
+
+                    <Text style={styles.descricaoPode}>Não pode descartar: {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>- Resíduos orgânicos; {'\n'}</Text>
+                    <Text style={styles.descricao}>- Resíduos químicos; {'\n'}</Text>
+                    <Text style={styles.descricao}>- Resíduos industriais; {'\n'}</Text>
+                    <Text style={styles.descricao}>- Resíduos de serviço de saúde. {'\n'}</Text>
+                    </ScrollView>
 
                 </>
             )}
@@ -113,17 +125,22 @@ const styles = StyleSheet.create({
     },
     endereco: {
         marginLeft: 20,
-        fontSize: 16,
+        fontSize: 18,
     },
     aberto: {
         marginLeft: 20,
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
         color: '#346E33',
     },
     contato: {
         marginLeft: 20,
-        fontSize: 16,
+        fontSize: 18,
+    },
+    google: {
+        marginLeft: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     mapContainer: {
         width: '100%',
