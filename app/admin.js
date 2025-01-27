@@ -3,13 +3,34 @@ import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
 const Admin = () => {
     const [nomePonto, setNomePonto] = useState('');
     const [endereco, setEndereco] = useState('');
     const [telefone, setTelefone] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleSave = () => {
+    const handleSave = async () => {
+        try{
+            setLoading(true);
+            await addDoc(collection(db, "pontos"), {
+                nome: nomePonto,
+                endereco: endereco,
+                telefone: telefone,
+                coordenadas: {
+                    latitude: -9.66025429545938, 
+                    longitude: -35.761059501428846
+                }
+            });
+            router.replace('/home');
+        } catch (error) {
+            console.error(error.code);
+            console.error(error.message);
+        } finally {
+            setLoading(false);
+        }
         Alert.alert('Ponto salvo!', `Nome: ${nomePonto}`);
     };
 
@@ -56,7 +77,8 @@ const Admin = () => {
 
             <Button 
                 mode="contained" 
-                onPress={handleSave} 
+                onPress={handleSave}
+                loading={loading} 
                 style={styles.button}
             >
                 Salvar
