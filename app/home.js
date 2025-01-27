@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Avatar } from 'react-native-paper';
-import { router } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { auth } from '../firebase.config';
-import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícones
+import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícone
 
 const Home = () => {
 
-    const [encontrando] = useState(false); //duvidaaaa!!!!
+    const [usuario, setUsuario] = useState(auth.currentUser);
+    const [encontrando] = useState(false); 
 
     const handleEncontrar = async () => {
         router.navigate('/municipios');
+    };
+
+    function isAdmin() {
+        return (usuario.email == 'mescedilene@gmail.com') || (usuario.email == 'sthefanygraziely@gmail.com');
     };
 
     return (
@@ -43,6 +48,12 @@ const Home = () => {
                 >
                     Escolha seu Município
                 </Button>
+
+                {isAdmin() && (
+                    <Link href='/admin' asChild>
+                        <Button mode='contained' textColor='green' style={styles.botaoAdmin}>Administrador</Button>
+                    </Link>
+                )}
             </View>
         </View>
     );
@@ -80,7 +91,17 @@ const styles = StyleSheet.create({
         borderColor: '#346E33', // Definindo a borda como verde
         borderWidth: 1, // Espessura da borda
         borderRadius: 10,
-    }
+    },
+    botaoAdmin: {
+        backgroundColor: '#f9f9f9',
+        borderColor: '#346E33',
+        borderRadius: 5,
+        borderWidth: 1,
+        padding: 10,
+        width: 250,
+        marginLeft: 50,
+        marginTop: 300,
+    },
 });
 
 export default Home;

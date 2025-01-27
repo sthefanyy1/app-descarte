@@ -19,7 +19,7 @@ export default function App() {
 
       <Link href='/cadastrar' asChild>
         <Button mode='contained' style={styles.botaoCadastrar}>Quero me cadastrar</Button>
-      </Link> 
+      </Link>
     </View>
     </View>
 
