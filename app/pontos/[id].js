@@ -80,6 +80,7 @@ const Id = () => {
                     color="red"
                     size={24}
                     onPress={handleDelete}
+                    style={styles.deletar}
                 />
             )}
 
@@ -87,32 +88,6 @@ const Id = () => {
                 <ActivityIndicator />
             ) : (
                 <>
-                    <View style={styles.mapContainer}>
-                        <MapView
-                            style={styles.map}
-                            initialCamera={{
-                                center: {
-                                    latitude: ponto.coordenadas.latitude,
-                                    longitude: ponto.coordenadas.longitude,
-                                },
-                                pitch: 45,
-                                heading: 90,
-                                altitude: 1000,
-                                zoom: 15,
-                            }}
-                        >
-                            <Marker
-                                identifier={id}
-                                coordinate={{
-                                    latitude: ponto.coordenadas.latitude,
-                                    longitude: ponto.coordenadas.longitude,
-                                }}
-                                title={ponto.nome}
-                                description={ponto.endereco}
-                            />
-                        </MapView>
-                    </View>
-
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
 
                     <ScrollView>
@@ -139,6 +114,32 @@ const Id = () => {
                             - Resíduos de serviço de saúde. {'\n'}
                         </Text>
                     </ScrollView>
+
+                    <View style={styles.mapContainer}>
+                        <MapView
+                            style={styles.map}
+                            initialCamera={{
+                                center: {
+                                    latitude: ponto.coordenadas.latitude,
+                                    longitude: ponto.coordenadas.longitude,
+                                },
+                                pitch: 45,
+                                heading: 90,
+                                altitude: 1000,
+                                zoom: 15,
+                            }}
+                        >
+                            <Marker
+                                identifier={id}
+                                coordinate={{
+                                    latitude: ponto.coordenadas.latitude,
+                                    longitude: ponto.coordenadas.longitude,
+                                }}
+                                title={ponto.nome}
+                                description={ponto.endereco}
+                            />
+                        </MapView>
+                    </View>
                 </>
             )}
         </View>
@@ -160,6 +161,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
+    },
+    deletar: { 
+        position: 'absolute',
+        top: 30,
+        right: 30,
     },
     texto: {
         marginLeft: 40,
