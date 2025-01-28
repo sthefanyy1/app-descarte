@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import {  Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
-import { Header } from 'react-native/Libraries/NewAppScreen';
+//import { Header } from 'react-native/Libraries/NewAppScreen';
 import { auth } from '../firebase.config';
 import { sendPasswordResetEmail } from "firebase/auth";
 
@@ -33,7 +33,6 @@ const Esqueceu = () => {
                         <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
                 </Appbar.Header>
 
-                <View style={styles.content}>
                     <Text style={styles.texto}>
                         Esqueceu sua senha?{'\n'}
                         Por favor, insira o e-mail vinculado a sua conta.
@@ -50,8 +49,6 @@ const Esqueceu = () => {
                     />
 
                     <Button mode='contained' onPress={() => handleRedefinir()} loading={redefinindo} style={styles.botaoAvance}>Avançar</Button>
-                </View>
-
             </View>
     );
 }
@@ -61,36 +58,31 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         padding: 10,
-        margin: 30,
         marginLeft: 10,
         marginRight: 10,
-        //marginTop:10,
-        //justifyContent: 'space-around',
-    },
-    content: {
-        flex: 1,
-        padding: 2,
-        justifyContent: 'space-around', 
+        justifyContent: 'justify-content',
     },
     header:{
         backgroundColor: '#fff',
     },
     texto: {
-        //marginTop: -240,
-        //margin: -15,
         marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
     inputEmail: {
+        marginTop: 50,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
-        //marginTop: -150,
     },
     botaoAvance: {
+        marginTop: 16,
         backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
     }
 })
 

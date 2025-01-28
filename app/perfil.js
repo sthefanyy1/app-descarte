@@ -42,7 +42,6 @@ const Perfil = () => {
                         <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
                 </Appbar.Header>
 
-                {/* <View style={styles.content}> */}
                     <Text style={styles.texto}>
                         Mude seu perfil:{'\n'}
                     </Text>
@@ -61,8 +60,6 @@ const Perfil = () => {
                     <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
 
                     <Button mode='contained' textColor='#346E33' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
-                {/* </View> */}
-
             </View>
     );
 }
