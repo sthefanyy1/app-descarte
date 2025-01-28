@@ -13,50 +13,6 @@ const Entrar = () => {
     const [senhaVisivel, setSenhaVisivel] = React.useState(false); // Estado para controlar a visibilidade da senha
     const [logando, setLogando] = useState(false);
 
-    // const handleLogin = () => {
-    //     setLogando(true);
-    //     console.log('handleLogin');
-    //     signInWithEmailAndPassword(auth, email , senha)
-    //     .then((userCredential) => {
-    //       // Signed in 
-    //       setLogando(false);
-    //       const user = userCredential.user;
-    //       console.log('logado com sucesso');
-    //       console.log(user.uid);
-    //       router.replace('/home');
-    //       // ...
-    //     })
-    //     .catch((error) => {
-    //     //   const errorCode = error.code;
-    //     //   const errorMessage = error.message;
-    //     //   console.error(errorCode);
-    //     //   console.error(errorMessage);
-    //     setLogando(false);
-    //       Alert.alert('Deu erro', 'Algo errado no seu login', [
-    //         {text: 'OK', onPress: () => console.log('OK Pressed')},
-    //     ]);
-    //     });
-    //   }
-
-    // const handleLogin = async () => {
-    //     try {
-    //         setLogando(true);
-    //         const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-    //         console.log(userCredential.user.displayName);
-    //         setLogando(false);
-    //         router.replace('/home');
-    //     } catch (error) {
-    //         const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //         console.error(errorCode);
-    //         console.error(errorMessage);
-    //         setLogando(false);
-    //             Alert.alert('Deu erro', 'Usuário e/ou Senha inválido', [
-    //                 {text: 'OK', onPress: () => console.log('OK Pressed')},
-    //             ]);
-    //     }
-    // }
-
     const handleLogin = async () => {
         try {
             setLogando(true);
@@ -126,7 +82,7 @@ const Entrar = () => {
                 label="Digite sua senha"
             />
 
-            <Link href='/esqueceu1' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
+            <Link href='/redefinirSenha' style={styles.textoEsqueceu}>Esqueceu sua senha?</Link>
 
             <Button mode='contained' onPress={() => handleLogin()} loading={logando} style={styles.botaoEntre}>Entrar</Button>
       

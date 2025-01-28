@@ -42,7 +42,7 @@ const Perfil = () => {
                         <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
                 </Appbar.Header>
 
-                <View style={styles.content}>
+                {/* <View style={styles.content}> */}
                     <Text style={styles.texto}>
                         Mude seu perfil:{'\n'}
                     </Text>
@@ -61,7 +61,7 @@ const Perfil = () => {
                     <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
 
                     <Button mode='contained' textColor='#346E33' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
-                </View>
+                {/* </View> */}
 
             </View>
     );
@@ -72,35 +72,28 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         padding: 10,
-        margin: 30,
         marginLeft: 10,
         marginRight: 10,
-        //marginTop:10,
-        //justifyContent: 'space-around',
-    },
-    content: {
-        flex: 1,
-        padding: 2,
-        justifyContent: 'space-around', 
+        justifyContent: 'justify-content',
     },
     header:{
         backgroundColor: '#fff',
     },
     texto: {
-        //marginTop: -240,
-        //margin: -15,
         marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
     inputNome: {
+        marginTop: 50,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
-        //marginTop: -150,
     },
     botaoPronto: {
         backgroundColor: '#346E33',
         borderRadius: 5,
+        marginTop: 50,
         padding: 10,
     },
     sair: {
