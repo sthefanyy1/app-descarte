@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        justifyContent: 'space-around',
+        justifyContent: 'justify-content',
     },
     header: {
         backgroundColor: '#fff',
@@ -111,10 +111,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     inputEmail: {
+        marginTop: 50,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
     },
     inputSenha: {
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
     },
@@ -128,11 +131,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
+        marginTop: 50,
     },
     textoCadastre: {
         color: '#000000',
         fontSize: 15,
         textAlign: 'center',
+        marginTop: 50,
     },
     fazerConta: {
         color: '#346E33',
