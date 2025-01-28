@@ -9,7 +9,7 @@ const Nova = () => {
     return (
             <View style={styles.container}>
             <StatusBar style="auto" />
-                <View style={styles.content}>
+
                     <Text style={styles.texto}>
                         Crie sua nova senha!{'\n'}
                         Verifique a sua caixa de e-mail
@@ -18,8 +18,6 @@ const Nova = () => {
                     <Link href='/entrar' asChild>
                         <Button mode='contained' style={styles.botaoEntrar}>Entrar</Button>
                     </Link>
-                </View>
-
             </View>
     );
 }
@@ -29,28 +27,24 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         padding: 10,
-        margin: 30,
         marginLeft: 10,
         marginRight: 10,
-        //marginTop:10,
-        //justifyContent: 'space-around',
-    },
-    content: {
-        flex: 1,
-        padding: 10,
-        justifyContent: 'space-around', 
+        justifyContent: 'justify-content',
     },
     texto: {
-        //marginTop: -240,
-        //margin: -15,
-        marginLeft: 10,
+        marginTop: 50,
+        marginBottom: 50,
+        marginLeft: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
     botaoEntrar: {
+        marginTop: 50,
         backgroundColor: '#346E33',
         borderRadius: 5,
         padding: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
     }
 })
 
