@@ -114,7 +114,6 @@ const Cadastrar = () => {
             {erro && <Text style={{ color:'red', marginLeft: 20 }}>E-mail/Senha inválido.</Text>}
 
             <Button mode='contained' onPress={() => handleCadastrar()} loading={cadastrando} style={styles.botaoEntre}>Cadastrar</Button>
-
         </View>
     );
 }
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        justifyContent: 'space-around',
+        justifyContent: 'justify-content',
     },
     header: {
         backgroundColor: '#fff',
@@ -137,14 +136,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     inputNome: {
+        marginTop: 30,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
     },
     inputEmail: {
+        marginTop: 10,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
     },
     inputSenha: {
+        marginTop: 10,
+        marginBottom: 50,
         backgroundColor: '#fff',
         color: '#346E33',
     },
