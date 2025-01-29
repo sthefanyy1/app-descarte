@@ -9,7 +9,7 @@ export default function App() {
   return (
     <View style={styles.containerFoto}>
       <StatusBar style="auto" />
-      <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
+      <Image source={require('./../assets/logo.png')} style={styles.logotipo} />
       <Text style={styles.texto}>DESCARTE CONSCIENTE </Text>
 
       <View style={styles.containerBotao}>
