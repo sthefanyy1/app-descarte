@@ -25,7 +25,7 @@ const Home = () => {
             
             {/* Contêiner para logo e avatar */}
             <View style={styles.header}>
-                <Image source={require('./../assets/logo.jpeg')} style={styles.logotipo} />
+                <Image source={require('./../assets/logo.png')} style={styles.logotipo} />
                 <Pressable onPress={() => router.navigate('/perfil')}>
                     <Avatar.Text size={50} label={auth.currentUser.displayName.charAt(0)} />
                 </Pressable>
