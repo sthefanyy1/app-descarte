@@ -164,8 +164,8 @@ const styles = StyleSheet.create({
     },
     deletar: { 
         position: 'absolute',
-        top: 30,
-        right: 30,
+        top: 40,
+        right: 10,
     },
     texto: {
         marginLeft: 40,
