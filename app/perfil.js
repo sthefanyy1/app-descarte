@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text, Alert } from 'react-native';
-import {  Appbar, TextInput, Button } from 'react-native-paper';
+import { Appbar, TextInput, Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import { auth } from '../firebase.config';
 import { updateProfile, signOut } from "firebase/auth";
@@ -35,34 +35,47 @@ const Perfil = () => {
     };
 
     return (
-            <View style={styles.container}>
+        <View style={styles.container}>
             <StatusBar style="auto" />
 
-                <Appbar.Header style={styles.header}>
-                        <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
-                </Appbar.Header>
+            <Appbar.Header style={styles.header}>
+                <Appbar.BackAction onPress={() => {router.back()}} color="#346E33" />
+            </Appbar.Header>
 
-                    <Text style={styles.texto}>
-                        Mude seu perfil:{'\n'}
-                    </Text>
+            <Text style={styles.config}>
+                Configurações{'\n'}
+            </Text>
 
-                    <TextInput
-                        style={styles.inputNome}
-                        value={nome}
-                        onChangeText={setNome}
-                        textColor="#346E33"
-                        autoCapitalize='none'
-                        keyboardType='name'
-                        activeUnderlineColor='#346E33'
-                        label="Digite seu nome"
-                    />
-
-                    <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>Pronto!</Button>
-
-                    <Button mode='contained' textColor='#346E33' onPress={() => handleSignOut()} style={styles.sair}>Sair</Button>
+            {/* Espaço para o texto "Mude seu perfil:" */}
+            <View style={styles.textoContainer}>
+                <Text style={styles.texto}>
+                    Mude seu perfil:{'\n'}
+                </Text>
             </View>
+
+            {/* Layout com input e botão lado a lado */}
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.inputNome}
+                    value={nome}
+                    onChangeText={setNome}
+                    textColor="#346E33"
+                    autoCapitalize='none'
+                    keyboardType='name'
+                    activeUnderlineColor='#346E33'
+                    label="Digite seu nome"
+                />
+                <Button mode='contained' onPress={() => handleName()} loading={atualizando} style={styles.botaoPronto}>
+                    Pronto!
+                </Button>
+            </View>
+
+            <Button mode='contained' textColor='#346E33' onPress={() => handleSignOut()} style={styles.sair}>
+                Sair
+            </Button>
+        </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -71,37 +84,50 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        justifyContent: 'justify-content',
+        justifyContent: 'flex-start',
     },
     header:{
         backgroundColor: '#fff',
     },
-    texto: {
-        marginLeft: 20,
+    config:{
+        marginLeft: 20,  
         fontSize: 20,
         fontWeight: 'bold',
     },
+    textoContainer: {
+        marginTop: 30, 
+        marginLeft: 20,
+    },
+    texto: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    inputContainer: {
+        flexDirection: 'row', // Alinhar o input e o botão na mesma linha
+        justifyContent: 'flex-start',
+        alignItems: 'center', // Alinhar verticalmente
+        marginTop: 10,
+        marginBottom: 20,
+    },
     inputNome: {
-        marginTop: 50,
-        marginBottom: 50,
+        flex: 1, 
         backgroundColor: '#fff',
         color: '#346E33',
     },
     botaoPronto: {
+        marginLeft: 10, // Espaço entre o input e o botão
         backgroundColor: '#346E33',
         borderRadius: 5,
-        marginTop: 50,
         padding: 10,
     },
     sair: {
         backgroundColor: '#fff',
-        borderRadius: 20,
+        borderRadius: 5,
         marginLeft: 20,
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 50,
         fontSize: 20,
         fontWeight: 'bold',
     },
-})
+});
 
 export default Perfil;
