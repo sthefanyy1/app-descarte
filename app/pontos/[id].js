@@ -87,33 +87,31 @@ const Id = () => {
             {loading ? (
                 <ActivityIndicator />
             ) : (
-                <>
+                <ScrollView contentContainerStyle={styles.scrollContainer}>
                     <Text style={styles.texto}>{ponto.nome}{'\n'}{'\n'}</Text>
 
-                    <ScrollView>
-                        <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
+                    <Text style={styles.endereco}>Endereço: {ponto.endereco}{'\n'}{'\n'}</Text>
 
-                        <Text style={styles.aberto}>
-                            Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}
-                        </Text>
-                        <Text style={styles.contato}>Contato: {ponto.telefone}{'\n'}{'\n'}</Text>
+                    <Text style={styles.aberto}>
+                        Aberto de domingo a domingo das 6h até às 18h{'\n'}{'\n'}
+                    </Text>
+                    <Text style={styles.contato}>Contato: {ponto.telefone}{'\n'}{'\n'}</Text>
 
-                        <Text style={styles.descricaoPode}>Pode descartar: {'\n'}{'\n'}</Text>
-                        <Text style={styles.descricao}>
-                            - Entulhos da construção civil (até 1m³); {'\n'}
-                            - Móveis e eletrodomésticos inservíveis; {'\n'}
-                            - Restos de poda de árvore; {'\n'}
-                            - Materiais recicláveis. {'\n'}{'\n'}
-                        </Text>
+                    <Text style={styles.descricaoPode}>Pode descartar: {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>
+                        - Entulhos da construção civil (até 1m³); {'\n'}
+                        - Móveis e eletrodomésticos inservíveis; {'\n'}
+                        - Restos de poda de árvore; {'\n'}
+                        - Materiais recicláveis. {'\n'}{'\n'}
+                    </Text>
 
-                        <Text style={styles.descricaoPode}>Não pode descartar: {'\n'}{'\n'}</Text>
-                        <Text style={styles.descricao}>
-                            - Resíduos orgânicos; {'\n'}
-                            - Resíduos químicos; {'\n'}
-                            - Resíduos industriais; {'\n'}
-                            - Resíduos de serviço de saúde. {'\n'}
-                        </Text>
-                    </ScrollView>
+                    <Text style={styles.descricaoPode}>Não pode descartar: {'\n'}{'\n'}</Text>
+                    <Text style={styles.descricao}>
+                        - Resíduos orgânicos; {'\n'}
+                        - Resíduos químicos; {'\n'}
+                        - Resíduos industriais; {'\n'}
+                        - Resíduos de serviço de saúde. {'\n'}
+                    </Text>
 
                     <View style={styles.mapContainer}>
                         <MapView
@@ -140,7 +138,7 @@ const Id = () => {
                             />
                         </MapView>
                     </View>
-                </>
+                </ScrollView>
             )}
         </View>
     );
@@ -205,6 +203,9 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    scrollContainer: {
+        paddingBottom: 20,
+    }
 });
 
 export default Id;
