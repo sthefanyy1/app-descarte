@@ -110,8 +110,10 @@ const Id = () => {
                         - Resíduos orgânicos; {'\n'}
                         - Resíduos químicos; {'\n'}
                         - Resíduos industriais; {'\n'}
-                        - Resíduos de serviço de saúde. {'\n'}
+                        - Resíduos de serviço de saúde. {'\n'}{'\n'}
                     </Text>
+
+                    <Text style={styles.localizacao}>Localização:{'\n'}{'\n'}</Text>
 
                     <View style={styles.mapContainer}>
                         <MapView
@@ -193,6 +195,12 @@ const styles = StyleSheet.create({
     descricao: {
         marginLeft: 20,
         fontSize: 18,
+    },
+    localizacao: {
+        marginLeft: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#346E33',
     },
     mapContainer: {
         width: '100%',
