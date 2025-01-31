@@ -58,7 +58,7 @@ const Maceio = () => {
                 <Appbar.BackAction onPress={() => { router.back() }} color="#346E33" />
             </Appbar.Header>
 
-            <Text style={styles.texto}>Pontos de coleta:{'\n'}</Text>
+            <Text style={styles.texto}>Pontos de coleta de Maceió:{'\n'}</Text>
 
             {loading ? (
                 <ActivityIndicator />
