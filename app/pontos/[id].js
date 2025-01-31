@@ -14,7 +14,7 @@ const Id = () => {
     const [usuario, setUsuario] = useState(auth.currentUser);
 
     const isAdmin = () => {
-        return (usuario.email === 'mescedilene@gmail.com' || usuario.email === 'sthefanygraziely@gmail.com');
+        return (usuario.email == 'mescedilene@gmail.com' || usuario.email == 'sthefanygraziely@gmail.com');
     };
 
     const getPonto = async () => {
