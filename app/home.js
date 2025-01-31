@@ -28,6 +28,7 @@ const Home = () => {
                 <Image source={require('./../assets/logo.png')} style={styles.logotipo} />
                 <Pressable onPress={() => router.navigate('/perfil')}>
                     <Avatar.Text size={50} label={auth.currentUser.displayName.charAt(0)} />
+                    <Text style={styles.user}>Usuário</Text>
                 </Pressable>
             </View>
 
@@ -77,6 +78,10 @@ const styles = StyleSheet.create({
     logotipo: {
         width: 150,
         height: 150,
+    },
+    user:{
+        fontSize: 15,
+        fontWeight: 'bold',
     },
     texto: {
         marginLeft: 20,
