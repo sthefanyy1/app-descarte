@@ -25,7 +25,7 @@ const Municipios = () => {
             </View>
 
             <Text style={styles.texto}>Olá, {auth.currentUser.displayName}{'\n'}</Text>
-            <Text style={styles.texto}>Encontre pontos de coleta de acordo com seu Município:{'\n'}</Text>
+            <Text style={styles.texto}>Municípios disponíveis:{'\n'}</Text>
 
             <Link href='/maceio' asChild>
                 <Button mode='contained' textColor="green" style={styles.botaoMunicipio}>Maceió</Button>
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
         marginBottom: 20, // Espaçamento entre a parte superior e o conteúdo abaixo
     },
     logotipo: {
-        width: 150,
-        height: 150,
+        width: 100,
+        height: 100,
     },
     user:{
         fontSize: 15,
