@@ -9,7 +9,9 @@ import { db } from '../firebase.config';
 const Admin = () => {
     const [nomePonto, setNomePonto] = useState('');
     const [endereco, setEndereco] = useState('');
-    const [telefone, setTelefone] = useState('');
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [telefone, setTelefone] = useState('08000822600'); // Todos são os mesmos contatos de telefone
     const [loading, setLoading] = useState(false);
 
     const handleSave = async () => {
@@ -20,8 +22,8 @@ const Admin = () => {
                 endereco: endereco,
                 telefone: telefone,
                 coordenadas: {
-                    latitude: -9.66025429545938, 
-                    longitude: -35.761059501428846
+                    latitude: parseFloat(latitude), 
+                    longitude: parseFloat(longitude)
                 }
             });
             router.replace('/home');
@@ -62,6 +64,28 @@ const Admin = () => {
                 keyboardType='default'
                 activeUnderlineColor='#346E33'
                 label="Endereço"
+            />
+
+            <TextInput
+                style={styles.input}
+                value={latitude}
+                onChangeText={setLatitude}
+                textColor="#346E33"
+                autoCapitalize='none'
+                keyboardType='phone-pad'
+                activeUnderlineColor='#346E33'
+                label="Latitude"
+            />
+
+            <TextInput
+                style={styles.input}
+                value={longitude}
+                onChangeText={setLongitude}
+                textColor="#346E33"
+                autoCapitalize='none'
+                keyboardType='phone-pad'
+                activeUnderlineColor='#346E33'
+                label="Longitude"
             />
 
             <TextInput

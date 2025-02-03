@@ -69,7 +69,6 @@ const Maceio = () => {
                         <Pontos 
                             nome={item.nome} 
                             endereco={item.endereco} 
-                            telefone={item.telefone} 
                             onPress={() => handleGetPontos(item.id)}
                             // onPress={() => router.navigate(`/ponto/${item.id}`)}
                         />
