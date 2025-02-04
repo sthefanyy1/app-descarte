@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
-import { Button, Avatar } from 'react-native-paper';
+import { Button, Avatar, FAB, Portal, PaperProvider } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { auth } from '../firebase.config';
-import { MaterialCommunityIcons } from '@expo/vector-icons';  // Importando ícone
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Home = () => {
 
     const [usuario, setUsuario] = useState(auth.currentUser);
-    const [encontrando] = useState(false); 
+    const [encontrando] = useState(false);
+    const [fabState, setFabState] = useState({ open: false }); // Estado do FAB
+
+    const onStateChange = ({ open }) => setFabState({ open });
+    const { open } = fabState;
 
     const handleEncontrar = async () => {
         router.navigate('/municipios');
+    };
+
+    const navigateToAdmin = () => {
+        router.navigate('/admin'); // Navegar para a página de admin
     };
 
     function isAdmin() {
@@ -49,13 +57,34 @@ const Home = () => {
                 >
                     Escolha seu Município
                 </Button>
-
-                {isAdmin() && (
-                    <Link href='/admin' asChild>
-                        <Button mode='contained' textColor='green' style={styles.botaoAdmin}>Administrador</Button>
-                    </Link>
-                )}
             </View>
+
+            {isAdmin() && (
+                <PaperProvider>
+                    <Portal>
+                        <FAB.Group
+                            style={{ backgroundColor: '#fff', color: '#346E33' }}
+                            open={open}
+                            visible
+                            icon={open ? 'plus' : 'plus'}
+                            actions={[
+                                {
+                                    icon: 'star',
+                                    label: 'Admin',
+                                    color: '#346E33',
+                                    onPress: navigateToAdmin, // Navegar para a página de admin
+                                },
+                            ]}
+                            onStateChange={onStateChange}
+                            onPress={() => {
+                                if (open) {
+                                    // Ação se o FAB estiver aberto
+                                }
+                            }}
+                        />
+                    </Portal>
+                </PaperProvider>
+            )}
         </View>
     );
 }
@@ -67,13 +96,13 @@ const styles = StyleSheet.create({
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        justifyContent: 'flex-start', // Isso vai alinhar os elementos no topo
+        justifyContent: 'flex-start', 
     },
     header: {
         flexDirection: 'row', // Alinha logo e avatar lado a lado
         justifyContent: 'space-between', // Dá um espaço entre os dois
-        alignItems: 'center', // Alinha ambos verticalmente ao centro
-        marginBottom: 20, // Espaçamento entre a parte superior e o conteúdo abaixo
+        alignItems: 'center', 
+        marginBottom: 20, 
     },
     logotipo: {
         width: 150,
@@ -89,23 +118,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     buttonContainer: {
-        marginTop: 20, // Ajuste mais flexível para o espaçamento entre o texto e o botão
+        marginTop: 20, 
         padding: 10,
     },
     botaoMunicipio: {
         borderColor: '#346E33', // Definindo a borda como verde
         borderWidth: 1, // Espessura da borda
         borderRadius: 10,
-    },
-    botaoAdmin: {
-        backgroundColor: '#f9f9f9',
-        borderColor: '#346E33',
-        borderRadius: 5,
-        borderWidth: 1,
-        padding: 10,
-        width: 250,
-        marginLeft: 50,
-        marginTop: 300,
     },
 });
 
