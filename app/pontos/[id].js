@@ -125,7 +125,7 @@ const Id = () => {
                                 },
                                 pitch: 45,
                                 heading: 90,
-                                altitude: 1000,
+                                altitude: 200,//1000
                                 zoom: 15,
                             }}
                         >

@@ -30,10 +30,10 @@ const Entrar = () => {
             setLogando(false);
             router.replace('/home');
         } catch (error) {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error(errorCode);
-            console.error(errorMessage);
+            //const errorCode = error.code;
+            //const errorMessage = error.message;
+            //console.error(errorCode);
+            //console.error(errorMessage);
             setLogando(false);
             Alert.alert('Deu erro', 'E-mail/Senha inválido ou não cadastrado', [
                 { text: 'OK', onPress: () => console.log('OK Pressed') },
@@ -41,7 +41,6 @@ const Entrar = () => {
         }
     };
     
-
     return (
         <View style={styles.container}>
             <View>

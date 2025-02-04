@@ -18,7 +18,7 @@ const Cadastrar = () => {
 
     const handleCadastrar = async () => {
         if (senha !== confirmar) {
-            setErro('As senhas não coincidem');
+            Alert.alert('Atenção', 'As senhas não coincidem', [{ text: 'OK' }]);
             return;
         }
         try {
@@ -35,8 +35,8 @@ const Cadastrar = () => {
             router.replace('/');
             setCadastrando(false);
         } catch (error) {
-            console.error(error.code);
-            console.error(error.message);
+            //console.error(error.code);
+            //console.error(error.message);
             setErro(error.message);
             setCadastrando(false);
         }
@@ -111,7 +111,7 @@ const Cadastrar = () => {
                 label="Confirme sua senha"
             />
 
-            {erro && <Text style={{ color:'red', marginLeft: 20 }}>E-mail/Senha inválido.</Text>}
+            {erro && <Text style={{ color:'red', marginLeft: 10 }}>Preencha todos os campos.</Text>} 
 
             <Button mode='contained' onPress={() => handleCadastrar()} loading={cadastrando} style={styles.botaoEntre}>Cadastrar</Button>
         </View>

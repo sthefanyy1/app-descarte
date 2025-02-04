@@ -7,7 +7,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 const Admin = () => {
-    const [nomePonto, setNomePonto] = useState('');
+    const [nomePonto, setNomePonto] = useState('Ecoponto');
     const [endereco, setEndereco] = useState('');
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
@@ -15,6 +15,10 @@ const Admin = () => {
     const [loading, setLoading] = useState(false);
 
     const handleSave = async () => {
+        if (!nomePonto ||!endereco ||!latitude ||!longitude) {
+            Alert.alert('Atenção', 'Todos os campos são obrigatórios.');
+            return;
+        }
         try{
             setLoading(true);
             await addDoc(collection(db, "pontos"), {
@@ -27,13 +31,13 @@ const Admin = () => {
                 }
             });
             router.replace('/home');
+            Alert.alert('Ponto salvo!', `Nome: ${nomePonto}`);
         } catch (error) {
             console.error(error.code);
             console.error(error.message);
         } finally {
             setLoading(false);
         }
-        Alert.alert('Ponto salvo!', `Nome: ${nomePonto}`);
     };
 
     return (
