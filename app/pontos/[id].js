@@ -113,7 +113,7 @@ const Id = () => {
                         - Resíduos de serviço de saúde. {'\n'}{'\n'}
                     </Text>
 
-                    <Text style={styles.localizacao}>Localização:{'\n'}{'\n'}</Text>
+                    <Text style={styles.localizacao}>Localização:{'\n'}Mapa Interativo{'\n'}{'\n'}</Text>
 
                     <View style={styles.mapContainer}>
                         <MapView

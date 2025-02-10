@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Image, StyleSheet, Text, Pressable } from 'react-native';
-import { Button, Avatar, FAB, Portal, PaperProvider } from 'react-native-paper';
+import { Button, Avatar, FAB, Portal, PaperProvider, MD3LightTheme } from 'react-native-paper';
 import { Link, router } from 'expo-router';
 import { auth } from '../firebase.config';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -25,6 +25,15 @@ const Home = () => {
 
     function isAdmin() {
         return (usuario.email == 'mescedilene@gmail.com') || (usuario.email == 'sthefanygraziely@gmail.com');
+    };
+
+    const meuTema ={
+        ...MD3LightTheme,
+        colors: {
+            ...MD3LightTheme.colors,
+            primaryContainer: '#f9f9f9',
+            onPrimaryContainer: '#346E33',
+        }
     };
 
     return (
@@ -60,10 +69,10 @@ const Home = () => {
             </View>
 
             {isAdmin() && (
-                <PaperProvider>
+                <PaperProvider theme={meuTema}>
                     <Portal>
                         <FAB.Group
-                            style={{ backgroundColor: '#fff', color: '#346E33' }}
+                            style={{ backgroundColor: '#fff' }}
                             open={open}
                             visible
                             icon={open ? 'plus' : 'plus'}
@@ -71,7 +80,8 @@ const Home = () => {
                                 {
                                     icon: 'star',
                                     label: 'Admin',
-                                    color: '#346E33',
+                                    //backdropColor: '#fff',
+                                    //color: 'green',
                                     onPress: navigateToAdmin, // Navegar para a página de admin
                                 },
                             ]}
